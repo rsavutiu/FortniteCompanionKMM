@@ -1,22 +1,26 @@
 package org.smartmuseum.fortnitecompanion
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject
 import org.smartmuseum.fortnitecompanion.data.cosmetics.Cosmetic
-import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticsResponse
-import org.smartmuseum.fortnitecompanion.di.commonModule
+import org.smartmuseum.fortnitecompanion.ui.FortniteCosmetic
 import org.smartmuseum.fortnitecompanion.usecases.GetCosmeticsUseCase
 import org.smartmuseum.fortnitecompanion.viewmodel.CosmeticsViewModel
 
@@ -39,10 +43,14 @@ fun App() {
             }
             AnimatedVisibility(showContent) {
                 val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("Compose: $greeting")
+                LazyColumn(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                    item {
+                        Text("Compose: $greeting")
+                    }
                     battleRoyalState.value.forEach { cosmetic ->
-                        Text(cosmetic.name ?: cosmetic.id)
+                        item {
+                            FortniteCosmetic(fortniteCosmetic = cosmetic)
+                        }
                     }
                 }
             }

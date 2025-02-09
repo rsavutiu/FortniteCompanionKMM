@@ -6,7 +6,7 @@ import org.smartmuseum.fortnitecompanion.data.generic.Images
 import org.smartmuseum.fortnitecompanion.data.generic.Variant
 import org.smartmuseum.fortnitecompanion.data.cosmetics.Rarity
 import org.smartmuseum.fortnitecompanion.data.cosmetics.Series
-import org.smartmuseum.fortnitecompanion.data.cosmetics.Type
+import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticType
 import org.smartmuseum.fortnitecompanion.data.generic.CosmeticsSet
 import org.smartmuseum.fortnitecompanion.data.generic.Introduction
 
@@ -55,7 +55,7 @@ data class ShopItem(
     val id: String,
     val name: String,
     val description: String,
-    val type: Type,
+    val type: CosmeticType,
     val rarity: Rarity,
     val series: Series? = null,
     val set: CosmeticsSet? = null,

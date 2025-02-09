@@ -1,6 +1,5 @@
 rootProject.name = "KotlinProject"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
 pluginManagement {
     repositories {
         google {
@@ -18,6 +17,10 @@ pluginManagement {
         gradlePluginPortal()
         jcenter()
     }
+}
+
+plugins {
+    id("com.gradle.enterprise") version "3.16.2"
 }
 
 dependencyResolutionManagement {

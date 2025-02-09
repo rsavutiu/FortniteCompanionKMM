@@ -28,7 +28,7 @@ data class Cosmetic(
     val id: String,
     val name: String? = null,
     val description: String? = null,
-    val type: Type? = null,
+    val type: CosmeticType? = null,
     val rarity: Rarity? = null,
     val series: Series? = null,
     val set: CosmeticsSet? = null,
@@ -47,10 +47,14 @@ data class Cosmetic(
     val path: String? = null,
     val added: Instant? = null,
     val shopHistory: List<String>? = null
-)
+) {
+    fun getNameOrId():String {
+        return name ?: id
+    }
+}
 
 @Serializable
-data class Type(
+data class CosmeticType(
     val value: String,
     val displayValue: String,
     val backendValue: String
@@ -84,7 +88,7 @@ data class BuiltInEmote(
     val id: String,
     val name: String,
     val description: String,
-    val type: Type,
+    val type: CosmeticType,
     val rarity: Rarity,
     val series: Series? = null,
     val set: CosmeticsSet? = null,

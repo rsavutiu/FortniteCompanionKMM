@@ -35,7 +35,7 @@ kotlin {
         }
     }
 
-    fun isIncludeIos(providers: org.gradle.api.provider.ProviderFactory): Boolean {
+    fun isIncludeIos(providers: ProviderFactory): Boolean {
         val includeIosProvider: Provider<String> = providers.gradleProperty("include_ios")
         return if (includeIosProvider.isPresent) {
             includeIosProvider.get().toBoolean()
@@ -77,6 +77,12 @@ kotlin {
             implementation(libs.moko.resources)
             implementation(libs.koin.core)
             implementation(libs.koin.android)
+            // Ktor CIO Engine (Android/JVM)
+            implementation(libs.ktor.client.cio)
+        }
+        iosMain.dependencies {
+            // Ktor Darwin Engine (iOS)
+            implementation(libs.ktor.client.darwin)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -100,6 +106,7 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
             //K-Tor
+            implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
@@ -117,6 +124,11 @@ kotlin {
             api(libs.moko.resources.compose)
             //Stately
             implementation(libs.stately.common)
+            //Coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.okhttp)
+            //YoutubeComposable
+            implementation(libs.compose.multiplatform.media.player)
         }
     }
 }
@@ -171,5 +183,9 @@ val ktorfitVersion: String = libs.versions.ktorfit.lib.get()
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }
 

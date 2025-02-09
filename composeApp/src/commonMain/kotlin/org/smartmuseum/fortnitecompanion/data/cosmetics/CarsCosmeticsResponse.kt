@@ -18,7 +18,7 @@ data class CarCosmetic(
     val id: String,
     val name: String,
     val description: String,
-    val type: Type,
+    val type: CosmeticType,
     val rarity: Rarity,
     val series: Series? = null,
     val set: CosmeticsSet? = null,
