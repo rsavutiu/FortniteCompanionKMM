@@ -2,7 +2,7 @@ package org.smartmuseum.fortnitecompanion.networking
 
 import androidx.compose.ui.text.intl.Locale
 
-class FortniteAPISupportedLanguages {
+object FortniteAPISupportedLanguages {
     private val supportedLanguages: List<String> = listOf(
         "ar",
         "de",
@@ -27,7 +27,7 @@ class FortniteAPISupportedLanguages {
         supportedLanguage = getSupportedLanguage(Locale.current.language)
     }
 
-    private fun getSupportedLanguage(language: String): String? {
+    fun getSupportedLanguage(language: String): String? {
         for (candidate in supportedLanguages) {
             if (candidate.startsWith(language)) {
                 return candidate

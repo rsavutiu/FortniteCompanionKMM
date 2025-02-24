@@ -16,7 +16,7 @@ data class InstrumentsCosmeticsResponse(
 @Serializable
 data class InstrumentCosmetic(
     val id: String,
-    val name: String,
+    val name: String? = null,
     val description: String,
     val type: CosmeticType,
     val rarity: Rarity,
@@ -36,4 +36,44 @@ data class InstrumentCosmetic(
     val path: String? = null,
     val added: Instant? = null,
     val shopHistory: List<String>? = null,
-)
+) : ICosmetic {
+    override fun getCosmeticsId(): String {
+        return id
+    }
+
+    override fun getNameOrId(): String {
+        return name ?: id
+    }
+
+    override fun getCosmeticDescription(): String? {
+        return description
+    }
+
+    override fun getCosmeticRarity(): Rarity? {
+        return rarity
+    }
+
+    override fun getSmallIcon(): String? {
+        return images.smallIcon ?: images.small
+    }
+
+    override fun getIcon(): String? {
+        return images.icon ?: images.large
+    }
+
+    override fun getCosmeticIntroduction(): Introduction? {
+        return introduction
+    }
+
+    override fun getCosmeticType(): CosmeticType? {
+        return type
+    }
+
+    override fun getVideo(): String? {
+        return showcaseVideo
+    }
+
+    override fun getDate(): Instant? {
+        return added
+    }
+}

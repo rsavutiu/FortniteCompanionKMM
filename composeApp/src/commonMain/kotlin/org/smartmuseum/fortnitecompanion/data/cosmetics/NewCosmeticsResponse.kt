@@ -1,5 +1,6 @@
 package org.smartmuseum.fortnitecompanion.data.cosmetics
 
+import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -10,11 +11,10 @@ data class NewCosmeticsResponse(
 
 @Serializable
 data class NewCosmeticsData(
-    val br: List<Cosmetic>,
-    val tracks: List<Cosmetic>,
-    val instruments: List<Cosmetic>,
-    val cars: List<Cosmetic>,
-    val lego: List<Cosmetic>,
-    val legoKits: List<Cosmetic>,
-    val beans: List<Cosmetic>
+    val date: Instant,
+    val build: String,
+    val previousBuild: String,
+    val hashes: Map<String, String>,
+    val lastAdditions: Map<String, String>,
+    val items: CosmeticsData
 )

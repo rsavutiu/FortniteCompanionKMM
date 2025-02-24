@@ -3,6 +3,7 @@ package org.smartmuseum.fortnitecompanion.data.cosmetics
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 import org.smartmuseum.fortnitecompanion.data.generic.CosmeticsSet
+import org.smartmuseum.fortnitecompanion.data.generic.Images
 import org.smartmuseum.fortnitecompanion.data.generic.Introduction
 import org.smartmuseum.fortnitecompanion.data.generic.Variant
 
@@ -15,14 +16,16 @@ data class TracksCosmeticsResponse(
 @Serializable
 data class TrackCosmetic(
     val id: String,
-    val name: String,
-    val description: String,
-    val type: CosmeticType,
-    val rarity: Rarity,
+    val devName: String? = null,
+    val title: String? = null,
+    val name: String? = null,
+    val description: String? = null,
+    val type: CosmeticType? = null,
+    val rarity: Rarity? = null,
     val series: Series? = null,
     val set: CosmeticsSet? = null,
     val introduction: Introduction? = null,
-    val images: TrackImages,
+    val images: Images? = null,
     val variants: List<Variant>? = null,
     val builtInEmoteIds: List<String>? = null,
     val gameplayTags: List<String>? = null,
@@ -37,6 +40,7 @@ data class TrackCosmetic(
     val shopHistory: List<String>? = null,
     val artist: String? = null,
     val album: String? = null,
+    val albumArt: String? = null,
     val releaseDate: String? = null,
     val duration: Int? = null,
     val bpm: Int? = null,
@@ -50,16 +54,47 @@ data class TrackCosmetic(
     val valence: Double? = null,
     val popularity: Int? = null,
     val difficulty: Difficulty? = null
-)
+) : ICosmetic {
+    override fun getCosmeticsId(): String {
+        return id
+    }
 
-@Serializable
-data class TrackImages(
-    val smallIcon: String? = null,
-    val icon: String? = null,
-    val featured: String? = null,
-    val background: String? = null,
-    val other: Map<String, String>? = null
-)
+    override fun getNameOrId(): String {
+        return name ?: title ?: devName ?: id
+    }
+
+    override fun getCosmeticDescription(): String? {
+        return description ?: artist
+    }
+
+    override fun getCosmeticRarity(): Rarity? {
+        return rarity
+    }
+
+    override fun getSmallIcon(): String? {
+        return images?.smallIcon ?: albumArt
+    }
+
+    override fun getIcon(): String? {
+        return images?.icon ?: albumArt
+    }
+
+    override fun getCosmeticIntroduction(): Introduction? {
+        return introduction
+    }
+
+    override fun getCosmeticType(): CosmeticType? {
+        return type
+    }
+
+    override fun getVideo(): String? {
+        return showcaseVideo
+    }
+
+    override fun getDate(): Instant? {
+        return added
+    }
+}
 
 @Serializable
 data class Difficulty(

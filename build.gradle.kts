@@ -10,6 +10,12 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
 }
 buildscript {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        google()
+    }
     dependencies {
 //        classpath(libs.kotlin.gradle.plugin)
 //        classpath(libs.gradle)

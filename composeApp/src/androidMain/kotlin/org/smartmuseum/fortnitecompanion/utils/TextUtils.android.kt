@@ -4,8 +4,8 @@ import org.smartmuseum.fortnitecompanion.storage.KMMSharedPrefs
 import dev.icerock.moko.resources.StringResource
 import io.ktor.utils.io.charsets.Charset
 
-actual fun String.format(format: String, vararg args: String): String {
-    return java.lang.String.format(format, *args)
+actual fun String.format(vararg args: String): String {
+    return java.lang.String.format(this, *args)
 }
 
 actual class TextUtils actual constructor() {

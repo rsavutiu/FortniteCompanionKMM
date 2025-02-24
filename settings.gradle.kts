@@ -1,4 +1,4 @@
-rootProject.name = "KotlinProject"
+rootProject.name = "FortniteCompanionKMM"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
@@ -15,7 +15,6 @@ pluginManagement {
         }
         mavenLocal()
         gradlePluginPortal()
-        jcenter()
     }
 }
 
@@ -37,7 +36,6 @@ dependencyResolutionManagement {
             url = uri("https://company/com/maven2")
         }
         mavenLocal()
-        jcenter()
     }
 }
 

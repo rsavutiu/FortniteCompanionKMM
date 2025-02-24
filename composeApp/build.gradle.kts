@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
-import org.gradle.api.provider.Provider
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -11,6 +10,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktorfit)
     alias(libs.plugins.kotlin.serialization)
+    id("dev.icerock.mobile.multiplatform-resources") // Plugins DSL way
 }
 
 //ktorfit {
@@ -42,7 +42,7 @@ kotlin {
         } else {
             false // Default value if the property is not present
         }
-    }// Example usage:
+    }
     val includeIos = isIncludeIos(providers)
 
     if (includeIos) {
@@ -74,7 +74,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.moko.resources)
             implementation(libs.koin.core)
             implementation(libs.koin.android)
             // Ktor CIO Engine (Android/JVM)
@@ -89,8 +88,14 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+//          Navigation
+            implementation(libs.navigation.compose)
+//          Material3
+            implementation(libs.compose.material3)
+
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
 //            implementation(libs.androidx.lifecycle.runtime.compose)
             //Ktorfit
             implementation(libs.ktorfit.lib)
@@ -128,19 +133,21 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.network.okhttp)
             //YoutubeComposable
-            implementation(libs.compose.multiplatform.media.player)
+            implementation(libs.alert.kmp)
         }
     }
 }
 
 android {
+    val sdkVersion = libs.versions.android.compileSdk.get().toInt()
     namespace = "org.smartmuseum.fortnitecompanion"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "org.smartmuseum.fortnitecompanion"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }
@@ -168,6 +175,7 @@ android {
             load(localPropsFile.inputStream())
         }
     }
+    buildToolsVersion = "35.0.1"
     // Define buildConfigFields
     buildTypes.forEach { buildType ->
         val apiKey = localProperties.getProperty("FORTNITE_API_KEY")
@@ -187,5 +195,12 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+multiplatformResources {
+    resourcesPackage.set("org.smartmuseum.fortnitecompanion")// required
+    resourcesClassName = "resources" // optional, default MR
+//    resourcesVisibility = MRVisibility.Public // optional, default Public
+    iosBaseLocalizationRegion = "en" // optional, default "en"
 }
 

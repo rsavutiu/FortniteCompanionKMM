@@ -11,7 +11,8 @@ data class PlayerStatsResponse(
 
 @Serializable
 data class PlayerStatsData(
-    val account: PlayerAccount,val battlePass: BattlePass,
+    val account: PlayerAccount,
+    val battlePass: BattlePass,
     val stats: PlayerStats
 )
 

@@ -16,14 +16,15 @@ data class LegoCosmeticsResponse(
 @Serializable
 data class LegoCosmetic(
     val id: String,
-    val name: String,
-    val description: String,
-    val type: CosmeticType,
-    val rarity: Rarity,
+    val cosmeticId: String? = null,
+    val name: String? = null,
+    val description: String? = null,
+    val type: CosmeticType? = null,
+    val rarity: Rarity? = null,
     val series: Series? = null,
     val set: CosmeticsSet? = null,
     val introduction: Introduction? = null,
-    val images: Images,
+    val images: Images? = null,
     val variants: List<Variant>? = null,
     val builtInEmoteIds: List<String>? = null,
     val gameplayTags: List<String>? = null,
@@ -38,7 +39,47 @@ data class LegoCosmetic(
     val shopHistory: List<String>? = null,
     val grantedFor: String? = null,
     val styles: List<Style>? = null
-)
+) : ICosmetic {
+    override fun getCosmeticsId(): String {
+        return id
+    }
+
+    override fun getNameOrId(): String {
+        return name ?: cosmeticId ?: id
+    }
+
+    override fun getCosmeticDescription(): String? {
+        return description
+    }
+
+    override fun getCosmeticRarity(): Rarity? {
+        return rarity
+    }
+
+    override fun getSmallIcon(): String? {
+        return images?.smallIcon ?: images?.small
+    }
+
+    override fun getIcon(): String? {
+        return images?.icon ?: images?.large ?: getSmallIcon()
+    }
+
+    override fun getCosmeticIntroduction(): Introduction? {
+        return introduction
+    }
+
+    override fun getCosmeticType(): CosmeticType? {
+        return type
+    }
+
+    override fun getVideo(): String? {
+        return showcaseVideo
+    }
+
+    override fun getDate(): Instant? {
+        return added
+    }
+}
 
 @Serializable
 data class Style(

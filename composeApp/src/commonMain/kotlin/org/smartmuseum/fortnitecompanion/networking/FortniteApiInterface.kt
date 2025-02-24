@@ -6,22 +6,6 @@ import de.jensklingenberg.ktorfit.http.Path
 import de.jensklingenberg.ktorfit.http.Query
 import io.ktor.client.statement.HttpResponse
 import org.smartmuseum.fortnitecompanion.config.AppConfig
-import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.BeansCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.CarsCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.InstrumentsCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.LegoCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.LegoKitsCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.NewCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.cosmetics.TracksCosmeticsResponse
-import org.smartmuseum.fortnitecompanion.data.creator_code.CreatorCodeResponse
-import org.smartmuseum.fortnitecompanion.data.map.MapResponse
-import org.smartmuseum.fortnitecompanion.data.news.BrNewsResponse
-import org.smartmuseum.fortnitecompanion.data.news.NewsResponse
-import org.smartmuseum.fortnitecompanion.data.news.StwNewsResponse
-import org.smartmuseum.fortnitecompanion.data.playlists.PlaylistsResponse
-import org.smartmuseum.fortnitecompanion.data.stats.PlayerStatsResponse
 
 const val BASE_URL = "https://fortnite-api.com/"
 val API_KEY = AppConfig.FORTNITE_API_KEY
@@ -135,13 +119,7 @@ interface FortniteApiInterface {
     @GET("v1/playlists/{playlist-id}")
     suspend fun getPlaylistById(@Path("playlist-id") playlistId: String, @Query("language") language: String? = null): HttpResponse
 
-//    @GET("v2/stats/br/")
-//    suspend fun getBattleRoyaleStats(
-//        @Header("Authorization") authorization: String = API_KEY,
-//        @Query("name") name: String,
-//        @Query("language") language: String? = null): NetworkResult<PlayerStatsResponse>
-
-    @GET("v2/stats/br/")
+    @GET("v2/stats/br/v2/")
     suspend fun getBattleRoyaleStats(
         @Header("Authorization") authorization: String = API_KEY,
         @Query("name") name: String,
