@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">分数</string>
+    <string name="scorePerMin">每分钟得分</string>
+    <string name="scorePerMatch">每场比赛得分</string>
+    <string name="wins">胜利</string>
+    <string name="top3">前 3 名</string>
+    <string name="top5">前 5 名</string>
+    <string name="top6">前 6 名</string>
+    <string name="top10">前 10 名</string>
+    <string name="top12">前 12 名</string>
+    <string name="top25">前 25 名</string>
+    <string name="kills">击杀</string>
+    <string name="killsPerMin">每分钟击杀</string>
+    <string name="killsPerMatch">每场比赛击杀</string>
+    <string name="deaths">死亡</string>
+    <string name="kd">K/D</string>
+    <string name="matches">比赛</string>
+    <string name="winRate">胜率</string>
+    <string name="minutesPlayed">游戏时长</string>
+    <string name="playersOutlived">存活玩家数</string>
+    <string name="lastModified">最后修改</string>
+    <string name="keyboardAndMouse">键盘和鼠标</string>
+    <string name="touch">触摸</string>
+    <string name="gamepad">游戏手柄</string>
+    <string name="all">全部</string>
+    <string name="account_not_found">找不到帐户</string>
+    <string name="account_found">已找到帐户</string>
+    <string name="account_private">帐户为私密帐户</string>
     <string name="enter_the_exact_player_id">请输入准确的玩家ID</string>
     <string name="player_id">玩家ID</string>
     <string name="details">详情</string>

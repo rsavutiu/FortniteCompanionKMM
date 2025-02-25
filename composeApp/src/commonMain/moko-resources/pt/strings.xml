@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Pontuação</string>
+    <string name="scorePerMin">Pontos por min.</string>
+    <string name="scorePerMatch">Pontos por part.</string>
+    <string name="wins">Vitórias</string>
+    <string name="top3">Top 3</string>
+    <string name="top5">Top 5</string>
+    <string name="top6">Top 6</string>
+    <string name="top10">Top 10</string>
+    <string name="top12">Top 12</string>
+    <string name="top25">Top 25</string>
+    <string name="kills">Abates</string>
+    <string name="killsPerMin">Abates por min.</string>
+    <string name="killsPerMatch">Abates por part.</string>
+    <string name="deaths">Mortes</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Partidas</string>
+    <string name="winRate">Taxa de vitória</string>
+    <string name="minutesPlayed">Minutos jogados</string>
+    <string name="playersOutlived">Jogadores superados</string>
+    <string name="lastModified">Última modificação</string>
+    <string name="keyboardAndMouse">Teclado e Mouse</string>
+    <string name="touch">Toque</string>
+    <string name="gamepad">Controle</string>
+    <string name="all">Todos</string>
+    <string name="account_not_found">Conta não encontrada</string>
+    <string name="account_found">Conta encontrada</string>
+    <string name="account_private">Conta privada</string>
     <string name="just_now">Agora mesmo</string>
     <string name="minutes_ago">Há %s minutos</string>
     <string name="hours_ago">Há %s horas</string>

@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Điểm</string>
+    <string name="scorePerMin">Điểm mỗi phút</string>
+    <string name="scorePerMatch">Điểm mỗi trận</string>
+    <string name="wins">Chiến thắng</string>
+    <string name="top3">Top 3</string>
+    <string name="top5">Top 5</string>
+    <string name="top6">Top 6</string>
+    <string name="top10">Top 10</string>
+    <string name="top12">Top 12</string>
+    <string name="top25">Top 25</string>
+    <string name="kills">Hạ gục</string>
+    <string name="killsPerMin">Hạ gục mỗi phút</string>
+    <string name="killsPerMatch">Hạ gục mỗi trận</string>
+    <string name="deaths">Chết</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Trận đấu</string>
+    <string name="winRate">Tỷ lệ thắng</string>
+    <string name="minutesPlayed">Số phút đã chơi</string>
+    <string name="playersOutlived">Số người sống sót</string>
+    <string name="lastModified">Lần sửa đổi cuối</string>
+    <string name="keyboardAndMouse">Bàn phím và Chuột</string>
+    <string name="touch">Cảm ứng</string>
+    <string name="gamepad">Tay cầm chơi game</string>
+    <string name="all">Tất cả</string>
+    <string name="account_not_found">Không tìm thấy tài khoản</string>
+    <string name="account_found">Đã tìm thấy tài khoản</string>
+    <string name="account_private">Tài khoản riêng tư</string>
     <string name="enter_the_exact_player_id">Nhập chính xác ID người chơi</string>
     <string name="player_id">ID người chơi</string>
     <string name="details">Chi tiết</string>

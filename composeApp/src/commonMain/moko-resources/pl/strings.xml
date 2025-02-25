@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Wynik</string>
+    <string name="scorePerMin">Wynik na min.</string>
+    <string name="scorePerMatch">Wynik na mecz</string>
+    <string name="wins">Wygrane</string>
+    <string name="top3">Top 3</string>
+    <string name="top5">Top 5</string>
+    <string name="top6">Top 6</string>
+    <string name="top10">Top 10</string>
+    <string name="top12">Top 12</string>
+    <string name="top25">Top 25</string>
+    <string name="kills">Zabójstwa</string>
+    <string name="killsPerMin">Zabójstwa/min.</string>
+    <string name="killsPerMatch">Zabójstwa/mecz</string>
+    <string name="deaths">Zgony</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Mecze</string>
+    <string name="winRate">Współczynnik wygr.</string>
+    <string name="minutesPlayed">Minuty grane</string>
+    <string name="playersOutlived">Gracze przeżyli</string>
+    <string name="lastModified">Ostatnio zmodyfik.</string>
+    <string name="keyboardAndMouse">Klawiatura i Mysz</string>
+    <string name="touch">Dotyk</string>
+    <string name="gamepad">Gamepad</string>
+    <string name="all">Wszystkie</string>
+    <string name="account_not_found">Konto nie znalezione</string>
+    <string name="account_found">Konto znalezione</string>
+    <string name="account_private">Konto prywatne</string>
     <string name="details">Szczegóły</string>
     <string name="just_now">Przed chwilą</string>
     <string name="minutes_ago">%s minut temu</string>

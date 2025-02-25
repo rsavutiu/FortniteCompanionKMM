@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Score</string>
+    <string name="scorePerMin">Score per min.</string>
+    <string name="scorePerMatch">Score per match</string>
+    <string name="wins">Overwinningen</string>
+    <string name="top3">Top 3</string>
+    <string name="top5">Top 5</string>
+    <string name="top6">Top 6</string>
+    <string name="top10">Top 10</string>
+    <string name="top12">Top 12</string>
+    <string name="top25">Top 25</string>
+    <string name="kills">Kills</string>
+    <string name="killsPerMin">Kills per min.</string>
+    <string name="killsPerMatch">Kills per match</string>
+    <string name="deaths">Doden</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Matches</string>
+    <string name="winRate">Winstpercentage</string>
+    <string name="minutesPlayed">Minuten gespeeld</string>
+    <string name="playersOutlived">Spelers overleefd</string>
+    <string name="lastModified">Laatst gewijzigd</string>
+    <string name="account_not_found">Account niet gevonden</string>
+    <string name="account_found">Account gevonden</string>
+    <string name="account_private">Account privé</string>
     <string name="details">Details</string>
     <string name="just_now">Zojuist</string>
     <string name="minutes_ago">%s minuten geleden</string>
@@ -7,7 +30,10 @@
     <string name="days_ago">%s dagen geleden</string>
     <string name="months_ago">%s maanden geleden</string>
     <string name="years_ago">%s jaar geleden</string>
-
+    <string name="keyboardAndMouse">Toetsenbord en Muis</string>
+    <string name="touch">Aanraking</string>
+    <string name="gamepad">Gamepad</string>
+    <string name="all">Alles</string>
     <string name="cosmetics">Cosmetica</string>
     <string name="battle_royale_cosmetics">Battle Royale</string>
     <string name="new_cosmetics">Nieuwe</string>

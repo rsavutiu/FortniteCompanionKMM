@@ -34,21 +34,28 @@ import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.storage.KMMSharedPrefs
 
 enum class Screen {
+    ACCOUNT_FOUND,
+    ACCOUNT_NOT_FOUND,
+    ACCOUNT_PRIVATE,
     FULL_COSMETIC,
-    SEARCH_TEXT_FIELD,
+    FIND_PLAYER_STATS,
+    PLAYER_STATS,
     LOADING,
     BATTLE_ROYALE_COSMETICS,
     NO_INTERNET_CONNECTION
 }
 
-enum class NavigationGraphs(val route: String) {
+enum class NavigationGraphs(val graph: String) {
     CosmeticsGraph("cosmetics_graph"),
     PlayerStatsGraph("player_stats_graph")
 }
 
 sealed class NavigationItem(val route: String) {
     data object FullCosmetic : NavigationItem(Screen.FULL_COSMETIC.name)
-    data object SearchTextField : NavigationItem(Screen.SEARCH_TEXT_FIELD.name)
+    data object FindPlayerStats : NavigationItem(Screen.FIND_PLAYER_STATS.name)
+    data object AccountFound : NavigationItem(Screen.ACCOUNT_FOUND.name)
+    data object AccountNotFound : NavigationItem(Screen.ACCOUNT_NOT_FOUND.name)
+    data object AccountPrivate : NavigationItem(Screen.ACCOUNT_PRIVATE.name)
     data object BattleRoyaleCosmetics : NavigationItem(Screen.BATTLE_ROYALE_COSMETICS.name)
     data object Loading : NavigationItem(Screen.LOADING.name)
     data object NoInternetConnection : NavigationItem(Screen.NO_INTERNET_CONNECTION.name)
@@ -69,7 +76,10 @@ fun AppNavHost(
     val appBarTitle: State<StringResource> = derivedStateOf {
         when (currentDestination.value) {
             NavigationItem.FullCosmetic.route -> resources.strings.details
-            NavigationItem.SearchTextField.route -> resources.strings.search
+            NavigationItem.FindPlayerStats.route -> resources.strings.search
+            NavigationItem.AccountFound.route -> resources.strings.account_found
+            NavigationItem.AccountNotFound.route -> resources.strings.account_not_found
+            NavigationItem.AccountPrivate.route -> resources.strings.account_private
             NavigationItem.Loading.route -> resources.strings.loading
             NavigationItem.NoInternetConnection.route -> resources.strings.no_internet_connection
             else -> resources.strings.app_name
@@ -98,7 +108,7 @@ fun AppNavHost(
             navController = navController,
             layoutConfigIsPortrait = layoutConfigIsPortrait.value,
             coroutineScope = coroutineScope,
-            startDestination = NavigationGraphs.CosmeticsGraph.route,
+            startDestination = NavigationGraphs.CosmeticsGraph.graph,
             drawerState = drawerState
         )
     }
@@ -126,10 +136,10 @@ fun drawerContent(
                     )
                 },
                 label = { Text(text = stringResource(resources.strings.search)) },
-                selected = currentDestination.value == NavigationItem.SearchTextField.route,
+                selected = currentDestination.value == NavigationItem.FindPlayerStats.route,
                 onClick = {
-                    navController.navigate(route = NavigationGraphs.PlayerStatsGraph.route)
-                    navController.navigate(NavigationItem.SearchTextField.route)
+                    navController.navigate(route = NavigationGraphs.PlayerStatsGraph.graph)
+                    navController.navigate(NavigationItem.FindPlayerStats.route)
                     coroutineScope.launch {
                         drawerState.close()
                     }
@@ -145,7 +155,7 @@ fun drawerContent(
                 label = { Text(text = stringResource(resources.strings.battle_royale_cosmetics)) },
                 selected = currentDestination.value == NavigationItem.BattleRoyaleCosmetics.route,
                 onClick = {
-                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.route)
+                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
                     navController.navigate(NavigationItem.BattleRoyaleCosmetics.route)
                     coroutineScope.launch {
                         drawerState.close()

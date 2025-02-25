@@ -41,7 +41,7 @@ fun CosmeticItem(
             .clickable {
                 fortniteCosmetic.getIcon()?.let {
                     onSelectCosmetic(fortniteCosmetic)
-                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.route)
+                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
                     navController.navigate(route = NavigationItem.FullCosmetic.route)
                 }
             },

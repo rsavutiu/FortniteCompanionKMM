@@ -25,33 +25,37 @@ class FindStatsUseCase(val fortniteApi: FortniteApiInterface, val language: Stri
     var statsResult: StateFlow<FindStatsResult?> = _statsResult
     private val responseConverter: ResponseConverter by inject()
     suspend fun loadStat(name: String) {
-        _statsResult.value = FindStatsResult.Loading
+//        _statsResult.emit(FindStatsResult.Loading)
+//        delay(1_000L)
         val result = fortniteApi.callApi<PlayerStatsResponse>(
             call = { fortniteApi.getBattleRoyaleStats(name = name) },
             responseConverter = responseConverter
         )
         return when (result) {
             is NetworkResult.Success -> {
-                _statsResult.value = FindStatsResult.Success(result.data)
+                _statsResult.emit(FindStatsResult.Success(result.data))
             }
 
             is NetworkResult.Error -> {
                 val exception = result.exception
                 val status = result.status
                 when (status) {
-                    HttpStatusCode.Forbidden -> _statsResult.value =
+                    HttpStatusCode.Forbidden -> _statsResult.emit(
                         FindStatsResult.AccountPrivate(exception.message ?: "")
+                    )
 
-                    HttpStatusCode.NotFound -> _statsResult.value =
+                    HttpStatusCode.NotFound -> _statsResult.emit(
                         FindStatsResult.AccountNotfound(exception.message ?: "")
+                    )
 
-                    else -> _statsResult.value =
+                    else -> _statsResult.emit(
                         FindStatsResult.UnknownError(exception.message ?: "")
+                    )
                 }
             }
 
-            NetworkResult.Loading, NetworkResult.Ready -> _statsResult.value =
-                FindStatsResult.Loading
+            is NetworkResult.Loading -> _statsResult.emit(FindStatsResult.Loading)
+            is NetworkResult.Ready -> _statsResult.emit(null)
         }
     }
 }

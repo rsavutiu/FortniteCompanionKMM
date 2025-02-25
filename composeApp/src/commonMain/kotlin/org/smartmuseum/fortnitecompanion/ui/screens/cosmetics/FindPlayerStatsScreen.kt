@@ -1,6 +1,5 @@
 package org.smartmuseum.fortnitecompanion.ui.screens.cosmetics
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +10,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -31,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
 import org.smartmuseum.fortnitecompanion.resources
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FindPlayerStatsScreen(
     modifier: Modifier = Modifier,
@@ -42,14 +39,13 @@ fun FindPlayerStatsScreen(
     val focusManager = LocalFocusManager.current
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background,
-        contentColor = MaterialTheme.colorScheme.primaryContainer
+        color = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface
     ) {
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .padding(16.dp)
-                .background(MaterialTheme.colorScheme.background),
+                .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

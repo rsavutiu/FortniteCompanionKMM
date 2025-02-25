@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">स्कोर</string>
+    <string name="scorePerMin">प्रति मिनट स्कोर</string>
+    <string name="scorePerMatch">प्रति मैच स्कोर</string>
+    <string name="wins">जीत</string>
+    <string name="top3">शीर्ष 3</string>
+    <string name="top5">शीर्ष 5</string>
+    <string name="top6">शीर्ष 6</string>
+    <string name="top10">शीर्ष 10</string>
+    <string name="top12">शीर्ष 12</string>
+    <string name="top25">शीर्ष 25</string>
+    <string name="kills">मार</string>
+    <string name="killsPerMin">प्रति मिनट मार</string>
+    <string name="killsPerMatch">प्रति मैच मार</string>
+    <string name="deaths">मौत</string>
+    <string name="kd">केडी</string>
+    <string name="matches">मैच</string>
+    <string name="winRate">जीत दर</string>
+    <string name="minutesPlayed">मिनट खेले</string>
+    <string name="playersOutlived">जीवित खिलाड़ी</string>
+    <string name="lastModified">अंतिम संशोधित</string>\
+    <string name="winRate">जीत दर</string>
+    <string name="minutesPlayed">मिनट खेले</string>
+    <string name="playersOutlived">जीवित खिलाड़ी</string>
+    <string name="account_not_found">खाता नहीं मिला</string>
+    <string name="account_found">खाता मिल गया</string>
+    <string name="account_private">खाता निजी है</string>
     <string name="enter_the_exact_player_id">सटीक प्लेयर आईडी दर्ज करें</string>
     <string name="player_id">प्लेयर आईडी</string>
     <string name="details">विवरण</string>

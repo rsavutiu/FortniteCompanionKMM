@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">スコア</string>
+    <string name="scorePerMin">1分あたりのスコア</string>
+    <string name="scorePerMatch">1試合あたりのスコア</string>
+    <string name="wins">勝利</string>
+    <string name="top3">トップ3</string>
+    <string name="top5">トップ5</string>
+    <string name="top6">トップ6</string>
+    <string name="top10">トップ10</string>
+    <string name="top12">トップ12</string>
+    <string name="top25">トップ25</string>
+    <string name="kills">キル</string>
+    <string name="killsPerMin">1分あたりのキル</string>
+    <string name="killsPerMatch">1試合あたりのキル</string>
+    <string name="deaths">デス</string>
+    <string name="kd">K/D</string>
+    <string name="matches">マッチ</string>
+    <string name="winRate">勝率</string>
+    <string name="minutesPlayed">プレイ時間</string>
+    <string name="playersOutlived">生き残ったプレイヤー</string>
+    <string name="lastModified">最終更新</string>
+    <string name="keyboardAndMouse">キーボードとマウス</string>
+    <string name="touch">タッチ</string>
+    <string name="gamepad">ゲームパッド</string>
+    <string name="all">すべて</string>
+    <string name="account_not_found">アカウントが見つかりません</string>
+    <string name="account_found">アカウントが見つかりました</string>
+    <string name="account_private">アカウントは非公開です</string>
     <string name="enter_the_exact_player_id">正確なプレイヤーIDを入力してください</string>
     <string name="player_id">プレイヤーID</string>
     <string name="details">詳細</string>

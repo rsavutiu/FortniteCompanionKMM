@@ -53,7 +53,7 @@ kotlin {
             //        iosSimulatorArm64()
         ).forEach { iosTarget ->
             iosTarget.binaries.framework {
-                baseName = "ComposeApp"
+                baseName = "SharedFramework"
                 isStatic = true
                 binaryOption("bundleId", "org.smartmuseum.fortnitecompanion.shared")
                 binaryOption("bundleVersion", "1")
@@ -134,6 +134,11 @@ kotlin {
             implementation(libs.coil.network.okhttp)
             //YoutubeComposable
             implementation(libs.alert.kmp)
+        }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(libs.jetbrains.kotlinx.coroutines.test)
+            implementation(libs.mockk)
         }
     }
 }

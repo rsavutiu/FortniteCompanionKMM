@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Счет</string>
+    <string name="scorePerMin">Счет в минуту</string>
+    <string name="scorePerMatch">Счет за матч</string>
+    <string name="wins">Победы</string>
+    <string name="top3">Топ 3</string>
+    <string name="top5">Топ 5</string>
+    <string name="top6">Топ 6</string>
+    <string name="top10">Топ 10</string>
+    <string name="top12">Топ 12</string>
+    <string name="top25">Топ 25</string>
+    <string name="kills">Убийства</string>
+    <string name="killsPerMin">Убийств в минуту</string>
+    <string name="killsPerMatch">Убийств за матч</string>
+    <string name="deaths">Смерти</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Матчи</string>
+    <string name="winRate">Процент побед</string>
+    <string name="minutesPlayed">Сыграно минут</string>
+    <string name="playersOutlived">Пережито игроков</string>
+    <string name="lastModified">Последнее изменение</string>
+
+    <string name="account_not_found">Аккаунт не найден</string>
+    <string name="account_found">Аккаунт найден</string>
+    <string name="account_private">Аккаунт приватный</string>
     <string name="enter_the_exact_player_id">Введите точный ID игрока</string>
     <string name="player_id">ID игрока</string>
     <string name="details">Подробности</string>
@@ -9,7 +33,10 @@
     <string name="days_ago">%s дней назад</string>
     <string name="months_ago">%s месяцев назад</string>
     <string name="years_ago">%s лет назад</string>
-
+    <string name="keyboardAndMouse">Клавиатура и Мышь</string>
+    <string name="touch">Сенсор</string>
+    <string name="gamepad">Геймпад</string>
+    <string name="all">Все</string>
     <string name="cosmetics">Косметика</string>
     <string name="battle_royale_cosmetics">Королевская битва</string>
     <string name="new_cosmetics">Новые</string>

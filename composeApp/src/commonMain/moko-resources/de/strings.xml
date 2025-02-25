@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Punktestand</string>
+    <string name="scorePerMin">Punkte pro Min.</string>
+    <string name="scorePerMatch">Punkte pro Spiel</string>
+    <string name="wins">Siege</string>
+    <string name="top3">Top 3</string>
+    <string name="top5">Top 5</string>
+    <string name="top6">Top 6</string>
+    <string name="top10">Top 10</string>
+    <string name="top12">Top 12</string>
+    <string name="top25">Top 25</string>
+    <string name="kills">Kills</string>
+    <string name="killsPerMin">Kills pro Min.</string>
+    <string name="killsPerMatch">Kills pro Spiel</string>
+    <string name="deaths">Tode</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Spiele</string>
+    <string name="winRate">Siegesrate</string>
+    <string name="minutesPlayed">Gespielte Min.</string>
+    <string name="playersOutlived">Überlebte Spieler</string>
+    <string name="lastModified">Zuletzt geändert</string>
+    <string name="account_not_found">Konto nicht gefunden</string>
+    <string name="account_found">Konto gefunden</string>
+    <string name="account_private">Konto privat</string>
     <string name="enter_the_exact_player_id">Gib die genaue Spieler-ID ein</string>
     <string name="player_id">Spieler-ID</string>
     <string name="details">Details</string>
@@ -100,4 +123,8 @@
     <string name="time_played">"Spielzeit"</string>
     <string name="no_internet_connection">Keine Internetverbindung</string>
     <string name="filter">"Filter"</string>
+    <string name="keyboardAndMouse">Tastatur und Maus</string>
+    <string name="touch">Berührung</string>
+    <string name="gamepad">Gamepad</string>
+    <string name="all">Alle</string>
 </resources>

@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="score">Punktestand</string>
+    <string name="scorePerMin">Punkte pro Min.</string>
+    <string name="scorePerMatch">Punkte pro Spiel</string>
+    <string name="wins">Siege</string>
+    <string name="top3">Top 3</string>
+    <string name="top5">Top 5</string>
+    <string name="top6">Top 6</string>
+    <string name="top10">Top 10</string>
+    <string name="top12">Top 12</string>
+    <string name="top25">Top 25</string>
+    <string name="kills">Kills</string>
+    <string name="killsPerMin">Kills pro Min.</string>
+    <string name="killsPerMatch">Kills pro Spiel</string>
+    <string name="deaths">Tode</string>
+    <string name="kd">K/D</string>
+    <string name="matches">Spiele</string>
+    <string name="winRate">Siegesrate</string>
+    <string name="minutesPlayed">Gespielte Min.</string>
+    <string name="playersOutlived">Überlebte Spieler</string>
+    <string name="lastModified">Zuletzt geändert</string>
+    <string name="keyboardAndMouse">Sleutelbord en Muis</string>
+    <string name="touch">Raak</string>
+    <string name="gamepad">Spelkonsole</string>
+    <string name="all">Alles</string>
+    <string name="account_not_found">Rekening nie gevind nie</string>
+    <string name="account_found">Rekening gevind</string>
+    <string name="account_private">Rekening privaat</string>
     <string name="enter_the_exact_player_id">Voer die presiese speler-ID in</string>
     <string name="player_id">Speler-ID</string>
     <string name="details">Besonderhede</string>
@@ -9,7 +36,6 @@
     <string name="days_ago">%s dae gelede</string>
     <string name="months_ago">%s maande gelede</string>
     <string name="years_ago">%s jaar gelede</string>
-
     <string name="cosmetics">Cosmetics</string>
     <string name="battle_royale_cosmetics">Battle Royale</string>
     <string name="new_cosmetics">Nuwe</string>
