@@ -51,7 +51,12 @@ fun CosmeticsList(
                     Tab(
                         selected = pagerState.currentPage == index,
                         onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
-                        text = { Text(it ?: "-|_|-") },
+                        text = {
+                            Text(
+                                it ?: "-|_|-",
+                                fontSize = MaterialTheme.typography.titleLarge.fontSize
+                            )
+                        },
                         selectedContentColor = MaterialTheme.colorScheme.onPrimary,
                         unselectedContentColor = MaterialTheme.colorScheme.onSurface
                     )
@@ -82,8 +87,9 @@ fun CosmeticsList(
                                 },
                                 text = {
                                     Text(
+                                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
                                         text = it?.displayValue ?: it?.value ?: "-|_|-",
-                                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                                        fontSize = MaterialTheme.typography.titleMedium.fontSize
                                     )
                                 },
                                 icon = {

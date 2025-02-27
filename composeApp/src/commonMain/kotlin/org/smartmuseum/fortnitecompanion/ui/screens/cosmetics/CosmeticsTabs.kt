@@ -56,7 +56,12 @@ fun CosmeticsTabs(
                     onClick = {
                         coroutineScope.launch { pagerState.animateScrollToPage(index) }
                     },
-                    text = { Text(cosmeticCallback.title) },
+                    text = {
+                        Text(
+                            cosmeticCallback.title,
+                            fontSize = MaterialTheme.typography.headlineSmall.fontSize
+                        )
+                    },
                     selectedContentColor = MaterialTheme.colorScheme.onPrimary,
                     unselectedContentColor = MaterialTheme.colorScheme.onSurface
                 )

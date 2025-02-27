@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.ui.nav.NavigationGraphs
 import org.smartmuseum.fortnitecompanion.ui.nav.NavigationItem
 import org.smartmuseum.fortnitecompanion.ui.themes.fortniteFontFamily
 import org.smartmuseum.fortnitecompanion.utils.getRelativeTimeText
@@ -41,14 +40,13 @@ fun CosmeticItem(
             .clickable {
                 fortniteCosmetic.getIcon()?.let {
                     onSelectCosmetic(fortniteCosmetic)
-                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
                     navController.navigate(route = NavigationItem.FullCosmetic.route)
                 }
             },
         colors = CardColors(
-            containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+            containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
-            disabledContainerColor = MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.1f),
+            disabledContainerColor = MaterialTheme.colorScheme.inverseSurface,
             disabledContentColor = MaterialTheme.colorScheme.inverseOnSurface
         )
     ) {
@@ -86,13 +84,13 @@ fun CosmeticItem(
                     Text(
                         modifier = Modifier.padding(bottom = 4.dp),
                         text = fortniteCosmetic.getNameOrId(),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleLarge
                     )
                     fortniteCosmetic.getCosmeticDescription()?.let {
                         Text(
                             modifier = Modifier.padding(bottom = 4.dp),
                             text = it,
-                            style = MaterialTheme.typography.bodyMedium,
+                            style = MaterialTheme.typography.bodyLarge,
                             fontFamily = fortniteFontFamily
                         )
                     }

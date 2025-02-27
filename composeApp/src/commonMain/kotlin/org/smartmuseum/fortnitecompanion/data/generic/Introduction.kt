@@ -7,5 +7,5 @@ data class Introduction(
     val chapter: String,
     val season: String,
     val text: String,
-    val backendValue: Int
+    val backendValue: Int? = null
 )

@@ -27,6 +27,7 @@ import org.smartmuseum.fortnitecompanion.networking.ResponseConverter
 import org.smartmuseum.fortnitecompanion.networking.createFortniteApiInterface
 import org.smartmuseum.fortnitecompanion.usecases.FindStatsUseCase
 import org.smartmuseum.fortnitecompanion.usecases.GetCosmeticsUseCase
+import org.smartmuseum.fortnitecompanion.usecases.GetShopDataUseCase
 import org.smartmuseum.fortnitecompanion.utils.ExternalIntents
 import org.smartmuseum.fortnitecompanion.utils.TextUtils
 
@@ -92,6 +93,13 @@ val commonModule = module {
 
     single<FindStatsUseCase> {
         FindStatsUseCase(
+            fortniteApi = get(),
+            language = FortniteAPISupportedLanguages.getSupportedLanguage(Locale.current.language)
+        )
+    }
+
+    single<GetShopDataUseCase> {
+        GetShopDataUseCase(
             fortniteApi = get(),
             language = FortniteAPISupportedLanguages.getSupportedLanguage(Locale.current.language)
         )

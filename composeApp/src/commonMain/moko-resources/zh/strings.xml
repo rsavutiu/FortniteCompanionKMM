@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">横幅</string>
+    <string name="shop">商店 (shāngdiàn)</string>
+    <string name="overall">总体 (zǒngtǐ)</string>
+    <string name="solo">单人 (dānrén)</string>
+    <string name="duo">双人 (shuāngrén)</string>
+    <string name="squad">小队 (xiǎoduì)</string>
+    <string name="ltm">限时模式 (xiànshí móshì)</string>
     <string name="score">分数</string>
     <string name="scorePerMin">每分钟得分</string>
     <string name="scorePerMatch">每场比赛得分</string>

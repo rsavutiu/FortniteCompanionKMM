@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.FindPlayerStatsScreen
+import org.smartmuseum.fortnitecompanion.ui.screens.stats.FindPlayerStatsScreen
 import org.smartmuseum.fortnitecompanion.ui.themes.AppTheme
 
 @Composable

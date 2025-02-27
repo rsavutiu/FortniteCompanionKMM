@@ -124,4 +124,7 @@ interface FortniteApiInterface {
         @Header("Authorization") authorization: String = API_KEY,
         @Query("name") name: String,
         @Query("language") language: String? = null): HttpResponse
+
+    @GET("v2/shop/")
+    suspend fun getShop(@Query("language") language: String? = null): HttpResponse
 }

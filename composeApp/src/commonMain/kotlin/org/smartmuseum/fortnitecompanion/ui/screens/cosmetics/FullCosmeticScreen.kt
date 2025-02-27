@@ -23,7 +23,7 @@ import org.smartmuseum.fortnitecompanion.utils.getRelativeTimeText
 @Composable
 fun FullCosmeticScreen(fullCosmeticState: State<ICosmetic?>) {
     val imageModifier = Modifier
-        .size(256.dp)
+        .size(320.dp)
         .defaultMinSize(minHeight = 128.dp, minWidth = 128.dp)
     AppTheme {
         Surface(modifier = Modifier.fillMaxSize()) {

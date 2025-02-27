@@ -25,8 +25,6 @@ class FindStatsUseCase(val fortniteApi: FortniteApiInterface, val language: Stri
     var statsResult: StateFlow<FindStatsResult?> = _statsResult
     private val responseConverter: ResponseConverter by inject()
     suspend fun loadStat(name: String) {
-//        _statsResult.emit(FindStatsResult.Loading)
-//        delay(1_000L)
         val result = fortniteApi.callApi<PlayerStatsResponse>(
             call = { fortniteApi.getBattleRoyaleStats(name = name) },
             responseConverter = responseConverter

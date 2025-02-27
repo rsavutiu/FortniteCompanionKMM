@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">Баннеры</string>
+    <string name="shop">магазин (magazin)</string>
+    <string name="overall">в целом (v tselom)</string>
+    <string name="solo">соло (solo)</string>
+    <string name="duo">дуо (duo)</string>
+    <string name="squad">отряд (otryad)</string>
+    <string name="ltm">ВР (Vremenniy Rezhim)</string>
     <string name="score">Счет</string>
     <string name="scorePerMin">Счет в минуту</string>
     <string name="scorePerMatch">Счет за матч</string>

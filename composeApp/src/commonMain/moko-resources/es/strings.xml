@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="shop">tienda</string>
+    <string name="overall">general</string>
+    <string name="solo">solo</string>
+    <string name="duo">dúo</string>
+    <string name="squad">escuadrón</string>
+    <string name="ltm">MTE (Modo de Tiempo Limitado)</string>
     <string name="score">Puntuación</string>
     <string name="scorePerMin">Puntos por min.</string>
     <string name="scorePerMatch">Puntos por part.</string>
@@ -31,6 +37,7 @@
     <string name="months_ago">Hace %s meses</string>
     <string name="years_ago">Hace %s años</string>
 
+    <string name="banners">Pancartas</string>
     <string name="cosmetics">Cosméticos</string>
     <string name="battle_royale_cosmetics">Battle Royale</string>
     <string name="new_cosmetics">Nuevos</string>

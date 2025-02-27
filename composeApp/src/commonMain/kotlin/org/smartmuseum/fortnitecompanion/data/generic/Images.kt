@@ -10,5 +10,6 @@ data class Images(
     val large: String? = null,
     val featured: String? = null,
     val background: String? = null,
+    val full_background: String? = null,
     val other: Map<String, String>? = null
 )

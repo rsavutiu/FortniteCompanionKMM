@@ -24,6 +24,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.plusmobileapps.konnectivity.Konnectivity
+import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.onEach
@@ -31,19 +32,27 @@ import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 import org.lighthousegames.logging.KmLog
+import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticEnum
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticsUiData
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
+import org.smartmuseum.fortnitecompanion.networking.NetworkResult
 import org.smartmuseum.fortnitecompanion.resources
+import org.smartmuseum.fortnitecompanion.ui.screens.banners.BannersScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.CosmeticsTabs
-import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.FindPlayerStatsScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.FullCosmeticScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.LoadingScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.PlayerStatsScreen
+import org.smartmuseum.fortnitecompanion.ui.screens.generic.ErrorScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.generic.NoInternetScreen
+import org.smartmuseum.fortnitecompanion.ui.screens.shop.ShopScreen
+import org.smartmuseum.fortnitecompanion.ui.screens.stats.AccountNotFound
+import org.smartmuseum.fortnitecompanion.ui.screens.stats.FindPlayerStatsScreen
 import org.smartmuseum.fortnitecompanion.usecases.FindStatsResult
+import org.smartmuseum.fortnitecompanion.usecases.GetShopResult
 import org.smartmuseum.fortnitecompanion.viewmodel.CosmeticsViewModel
 import org.smartmuseum.fortnitecompanion.viewmodel.FindPlayerStatsViewModel
+import org.smartmuseum.fortnitecompanion.viewmodel.ShopViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,13 +62,18 @@ fun NavHost(
     layoutConfigIsPortrait: Boolean,
     coroutineScope: CoroutineScope,
     startDestination: String,
-    drawerState: DrawerState
+    drawerState: DrawerState,
+    appTitle: State<StringResource>
 ) {
     val log: KmLog = koinInject<KmLog> { parametersOf("AppNavHost") }
     val connectivity = koinInject<Konnectivity>()
     val isConnected: State<Boolean> = connectivity.isConnectedState.collectAsState()
+    val shopViewModel: ShopViewModel = viewModel()
     val cosmeticsViewModel: CosmeticsViewModel = viewModel()
     val findPlayerStatsViewModel: FindPlayerStatsViewModel = viewModel()
+    val shopValue: GetShopResult = shopViewModel.shopResult.collectAsState().value
+    val bannerResponse: NetworkResult<BannerResponse> =
+        cosmeticsViewModel.bannerNetworkStatus.collectAsState().value
     coroutineScope.launch {
         findPlayerStatsViewModel.statsResult.onEach {
             log.i { "statsResultState received $it" }
@@ -108,6 +122,9 @@ fun NavHost(
             }
         }.collect {}
     }
+    LaunchedEffect(appTitle.value) {
+        log.i { "appBarTitle.value ${appTitle.value}" }
+    }
     Column {
         CenterAlignedTopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
@@ -115,7 +132,9 @@ fun NavHost(
                 titleContentColor = MaterialTheme.colorScheme.onPrimary,
                 actionIconContentColor = MaterialTheme.colorScheme.onPrimary,
             ),
-            title = { Text(stringResource(resources.strings.cosmetics)) },
+            title = {
+                Text(stringResource(appTitle.value))
+            },
             actions = {
 
             },
@@ -140,16 +159,56 @@ fun NavHost(
                 }
             }
         )
-
         NavHost(
             modifier = modifier,
             navController = navController,
             startDestination = startDestination
         ) {
             navigation(
+                startDestination = NavigationItem.Shop.route,
+                route = NavigationGraphs.ShopGraph.graph
+            ) {
+                log.i { "Composable shop recompose $shopValue" }
+                composable(route = NavigationItem.FailedShop.route) { NoInternetScreen() }
+                composable(route = NavigationItem.Loading.route) { LoadingScreen() }
+                composable(route = NavigationItem.Shop.route) {
+                    if (shopValue is GetShopResult.Success) {
+                        log.i { "Composable shop recompose2 $shopValue" }
+                        ShopScreen(
+                            shopResponse = shopValue.stats,
+                        )
+                    } else {
+                        navController.navigate(NavigationItem.FailedShop.route)
+                    }
+                }
+            }
+            navigation(
                 startDestination = NavigationItem.BattleRoyaleCosmetics.route,
                 route = NavigationGraphs.CosmeticsGraph.graph
             ) {
+                composable(route = NavigationItem.Banners.route) {
+                    cosmeticsViewModel.getBanners()
+                    when (bannerResponse) {
+                        is NetworkResult.Error -> ErrorScreen(onRetry = {
+                            cosmeticsViewModel.getBanners()
+                        })
+
+                        NetworkResult.Ready, NetworkResult.Loading -> LoadingScreen()
+                        is NetworkResult.Success -> {
+                            BannersScreen(
+                                navController = navController,
+                                bannerResponse = bannerResponse.data,
+                                onSelectCosmetic = { newFullCosmetic ->
+                                    coroutineScope.launch {
+                                        cosmeticsViewModel.setFullCosmetic(
+                                            newFullCosmetic
+                                        )
+                                    }
+                                }
+                            )
+                        }
+                    }
+                }
                 composable(route = NavigationItem.BattleRoyaleCosmetics.route) {
                     CosmeticsTabs(
                         navController = navController,
@@ -196,6 +255,9 @@ fun NavHost(
                             stats = (findPlayerStatsViewModel.statsResult.value as FindStatsResult.Success).stats.data
                         )
                     }
+                }
+                composable(route = NavigationItem.AccountNotFound.route) {
+                    AccountNotFound()
                 }
             }
             composable(route = NavigationItem.NoInternetConnection.route) {

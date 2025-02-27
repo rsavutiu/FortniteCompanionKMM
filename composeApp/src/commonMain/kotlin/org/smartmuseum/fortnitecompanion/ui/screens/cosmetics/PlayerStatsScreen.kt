@@ -56,13 +56,23 @@ fun PlayerStatsScreen(
             Tab(
                 selected = pagerState.currentPage == 0,
                 onClick = { coroutineScope.launch { pagerState.animateScrollToPage(0) } },
-                text = { Text(stringResource(resources.strings.account_found)) },
+                text = {
+                    Text(
+                        stringResource(resources.strings.account_found),
+                        fontSize = MaterialTheme.typography.headlineSmall.fontSize
+                    )
+                },
                 selectedContentColor = MaterialTheme.colorScheme.onPrimary,
                 unselectedContentColor = MaterialTheme.colorScheme.onSurface
             )
             tabs.forEachIndexed { index, tab ->
                 Tab(
-                    text = { Text(tab.first) },
+                    text = {
+                        Text(
+                            tab.first,
+                            fontSize = MaterialTheme.typography.headlineSmall.fontSize
+                        )
+                    },
                     selected = pagerState.currentPage == index + 1,
                     onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index + 1) } },
                     selectedContentColor = MaterialTheme.colorScheme.onPrimary,
@@ -158,7 +168,12 @@ fun StatsSection(stats: StatsCategory, title: String, cardColors: CardColors) {
                 Tab(
                     selected = pagerState.currentPage == 0,
                     onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
-                    text = { Text(it.key) },
+                    text = {
+                        Text(
+                            it.key,
+                            fontSize = MaterialTheme.typography.headlineSmall.fontSize
+                        )
+                    },
                     selectedContentColor = MaterialTheme.colorScheme.onPrimary,
                     unselectedContentColor = MaterialTheme.colorScheme.onSurface
                 )
@@ -166,7 +181,7 @@ fun StatsSection(stats: StatsCategory, title: String, cardColors: CardColors) {
         }
         HorizontalPager(state = pagerState) {
             statsMap.onEachIndexed { index: Int, entry: Map.Entry<String, StatsMode> ->
-                LazyColumn {
+                LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
                     item {
                         Text(
                             modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),

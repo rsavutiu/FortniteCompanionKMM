@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">Banery</string>
+    <string name="shop">sklep</string>
+    <string name="overall">ogólnie</string>
+    <string name="solo">solo</string>
+    <string name="duo">duo</string>
+    <string name="squad">drużyna</string>
+    <string name="ltm">TCO (Tryb Czasowo Ograniczony)</string>
     <string name="score">Wynik</string>
     <string name="scorePerMin">Wynik na min.</string>
     <string name="scorePerMatch">Wynik na mecz</string>

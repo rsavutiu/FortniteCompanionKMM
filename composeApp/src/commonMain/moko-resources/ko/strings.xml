@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">배너</string>
+    <string name="shop">상점 (sangjeom)</string>
+    <string name="overall">전체 (jeonche)</string>
+    <string name="solo">솔로 (sollo)</string>
+    <string name="duo">듀오 (dyuo)</string>
+    <string name="squad">스쿼드 (seukwodeu)</string>
+    <string name="ltm">LTM (리미티드 타임 모드)</string>
     <string name="score">점수</string>
     <string name="scorePerMin">분당 점수</string>
     <string name="scorePerMatch">경기당 점수</string>

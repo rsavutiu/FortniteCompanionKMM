@@ -1,14 +1,8 @@
 package org.smartmuseum.fortnitecompanion.data.shop
 
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.smartmuseum.fortnitecompanion.data.generic.Images
-import org.smartmuseum.fortnitecompanion.data.generic.Variant
-import org.smartmuseum.fortnitecompanion.data.cosmetics.Rarity
-import org.smartmuseum.fortnitecompanion.data.cosmetics.Series
-import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticType
-import org.smartmuseum.fortnitecompanion.data.generic.CosmeticsSet
-import org.smartmuseum.fortnitecompanion.data.generic.Introduction
 
 @Serializable
 data class ShopResponse(
@@ -20,18 +14,7 @@ data class ShopResponse(
 data class ShopData(
     val hash: String,
     val date: Instant,
-    val featured: ShopSection? = null,
-    val daily: ShopSection? = null,
-    val specialFeatured: ShopSection? = null,
-    val specialDaily: ShopSection? = null,
-    val votes: ShopSection? = null,
-    val voteWinners: ShopSection? = null,
-    val upcoming: List<ShopEntry>? = null
-)
-
-@Serializable
-data class ShopSection(
-    val name: String,
+    val vbuckIcon: String,
     val entries: List<ShopEntry>
 )
 
@@ -39,52 +22,75 @@ data class ShopSection(
 data class ShopEntry(
     val regularPrice: Int,
     val finalPrice: Int,
-    val bundle: Bundle? = null,
-    val banner: Banner? = null,
-    val displayAssetPath: String? = null,
-    val definitionPath: String? = null,
-    val offerId: String? = null,
-    val devName: String? = null,
-    val offerType: String? = null,
-    val categories: List<String>? = null,
-    val items: List<ShopItem>
+    val devName: String,
+    val offerId: String,
+    val inDate: Instant,
+    val outDate: Instant,
+    val offerTag: OfferTag? = null,
+    val giftable: Boolean,
+    val refundable: Boolean,
+    val sortPriority: Int,
+    val layoutId: String,
+    val layout: Layout? = null,
+    val tileSize: String? = null,
+    val newDisplayAssetPath: String? = null,
+    val newDisplayAsset: DisplayAsset? = null,
+    val tracks: List<Track>? = null
 )
 
 @Serializable
-data class ShopItem(
+data class OfferTag(
     val id: String,
-    val name: String,
-    val description: String,
-    val type: CosmeticType,
-    val rarity: Rarity,
-    val series: Series? = null,
-    val set: CosmeticsSet? = null,
-    val introduction: Introduction? = null,
-    val images: Images,
-    val variants: List<Variant>? = null,
-    val builtInEmoteIds: List<String>? = null,
-    val gameplayTags: List<String>? = null,
-    val metaTags: List<String>? = null,
-    val showcaseVideo: String? = null,
-    val dynamicPakId: String? = null,
-    val itemPreviewHeroPath: String? = null,
-    val displayAssetPath: String? = null,
-    val definitionPath: String? = null,
-    val path: String? = null,
-    val added: Instant? = null,
-    val shopHistory: List<String>? = null
+    val text: String
 )
 
 @Serializable
-data class Bundle(
-    val name: String,
-    val info: String? = null,
+data class RenderImage(
+    val productTag: String? = null,
+    val fileName: String? = null,
     val image: String? = null
 )
 
 @Serializable
-data class Banner(
-    val value: String,
-    val intensity: String,
-    val backendValue: String
+data class DisplayAsset(
+    val id: String,
+    val renderImages: List<RenderImage>? = null
+)
+
+@Serializable
+data class Layout(
+    val id: String? = null,
+    val name: String? = null,
+    val category: String? = null,
+    val index: Int? = null,
+    val rank: Int? = null,
+    val showIneligibleOffers: String? = null,
+    val useWidePreview: Boolean? = null,
+    val displayType: String? = null
+)
+
+@Serializable
+data class Track(
+    val id: String,
+    val devName: String? = null,
+    val title: String? = null,
+    val artist: String? = null,
+    val album: String? = null,
+    val releaseYear: Int? = null,
+    val bpm: Int? = null,
+    val duration: Int? = null,
+    val difficulty: Difficulty? = null,
+    val genres: List<String> = emptyList(),
+    val albumArt: String? = null,
+    val added: Instant
+)
+
+@Serializable
+data class Difficulty(
+    val vocals: Int,
+    val guitar: Int,
+    val bass: Int,
+    @SerialName("plasticBass") val plasticBass: Int,
+    val drums: Int,
+    @SerialName("plasticDrums") val plasticDrums: Int
 )

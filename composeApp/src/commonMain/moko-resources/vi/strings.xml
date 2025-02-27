@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">Biểu ngữ</string>
+    <string name="shop">cửa hàng</string>
+    <string name="overall">tổng thể</string>
+    <string name="solo">solo</string>
+    <string name="duo">đôi</string>
+    <string name="squad">đội</string>
+    <string name="ltm">Chế độ giới hạn thời gian</string>
     <string name="score">Điểm</string>
     <string name="scorePerMin">Điểm mỗi phút</string>
     <string name="scorePerMatch">Điểm mỗi trận</string>

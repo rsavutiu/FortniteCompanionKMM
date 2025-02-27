@@ -6,6 +6,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 import org.smartmuseum.fortnitecompanion.resources
+import org.smartmuseum.fortnitecompanion.utils.formatDate
 
 @Serializable
 data class PlayerStatsResponse(
@@ -64,14 +65,15 @@ data class StatsCategory(
     val squad: StatsMode? = null,
     val ltm: StatsMode? = null
 ) {
+    @Composable
     fun getNonnullStatsMap(): LinkedHashMap<String, StatsMode> {
         val statsMap = linkedMapOf<String, StatsMode>()
         val possibleStats: Map<String, StatsMode?> = mapOf(
-            "Overall" to this.overall,
-            "Solo" to this.solo,
-            "Duo" to this.duo,
-            "Squad" to this.squad,
-            "LTM" to this.ltm
+            stringResource(resources.strings.overall) to this.overall,
+            stringResource(resources.strings.solo) to this.solo,
+            stringResource(resources.strings.duo) to this.duo,
+            stringResource(resources.strings.squad) to this.squad,
+            stringResource(resources.strings.ltm) to this.ltm
         )
         for (entry in possibleStats.entries) {
             entry.value?.let {
@@ -146,7 +148,7 @@ data class StatsMode(
         ret[resources.strings.winRate] = winRate.toString()
         ret[resources.strings.minutesPlayed] = minutesPlayed.toString()
         ret[resources.strings.playersOutlived] = playersOutlived.toString()
-        ret[resources.strings.lastModified] = lastModified.toString()
+        ret[resources.strings.lastModified] = lastModified.formatDate("dd MMM yy HH:mm")
         return ret
     }
 }

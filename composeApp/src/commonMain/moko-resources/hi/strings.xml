@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">बैनर</string>
+    <string name="shop">दुकान (dukaan)</string>
+    <string name="overall">कुल (kul)</string>
+    <string name="solo">एकल (ekal)</string>
+    <string name="duo">जोड़ी (jodi)</string>
+    <string name="squad">दस्ता (dasta)</string>
+    <string name="ltm">सीमित समय मोड (simit samay mod)</string>
     <string name="score">स्कोर</string>
     <string name="scorePerMin">प्रति मिनट स्कोर</string>
     <string name="scorePerMatch">प्रति मैच स्कोर</string>

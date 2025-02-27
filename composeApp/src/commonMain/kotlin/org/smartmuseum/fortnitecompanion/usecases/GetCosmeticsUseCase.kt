@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.BattleRoyaleCosmeticsResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.BeansCosmeticsResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CarsCosmeticsResponse
@@ -36,6 +37,10 @@ class GetCosmeticsUseCase(val fortniteApi: FortniteApiInterface, val language: S
     }
     private val responseConverter: ResponseConverter by inject()
 
+    private val _bannerNetworkStatus: MutableStateFlow<NetworkResult<BannerResponse>> =
+        MutableStateFlow(NetworkResult.Ready)
+    val bannerNetworkStatus: StateFlow<NetworkResult<BannerResponse>> = _bannerNetworkStatus
+
     private val _allCosmeticsNetworkStatus: MutableStateFlow<NetworkResult<List<ICosmetic>>> =
         MutableStateFlow(NetworkResult.Ready)
     val allCosmeticsNetworkStatus: StateFlow<NetworkResult<List<ICosmetic>>> =
@@ -58,6 +63,20 @@ class GetCosmeticsUseCase(val fortniteApi: FortniteApiInterface, val language: S
                 NetworkResult.Error(
                     brCosmeticsResponse.exception,
                     brCosmeticsResponse.status
+                )
+            )
+        }
+    }
+
+    suspend fun getBanners() {
+        if (_bannerNetworkStatus.value is NetworkResult.Ready ||
+            _bannerNetworkStatus.value is NetworkResult.Error
+        ) {
+            _bannerNetworkStatus.emit(NetworkResult.Loading)
+            _bannerNetworkStatus.emit(
+                fortniteApi.callApi<BannerResponse>(
+                    call = { fortniteApi.getBanners(language = language) },
+                    responseConverter = responseConverter
                 )
             )
         }

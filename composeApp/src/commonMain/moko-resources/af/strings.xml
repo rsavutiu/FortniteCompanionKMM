@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">Banners</string>
+    <string name="shop">winkel</string>
+    <string name="overall">algeheel</string>
+    <string name="solo">solo</string>
+    <string name="duo">duo</string>
+    <string name="squad">span</string>
+    <string name="ltm">BTM (Beperkte Tyd Modus)</string>
     <string name="score">Punktestand</string>
     <string name="scorePerMin">Punkte pro Min.</string>
     <string name="scorePerMatch">Punkte pro Spiel</string>

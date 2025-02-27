@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="banners">バナー</string>
+    <string name="shop">ショップ (shoppu)</string>
+    <string name="overall">全体 (zentai)</string>
+    <string name="solo">ソロ (soro)</string>
+    <string name="duo">デュオ (dyuo)</string>
+    <string name="squad">スクワッド (sukuwaddo)</string>
+    <string name="ltm">LTM (Limited Time Mode)</string>
     <string name="score">スコア</string>
     <string name="scorePerMin">1分あたりのスコア</string>
     <string name="scorePerMatch">1試合あたりのスコア</string>

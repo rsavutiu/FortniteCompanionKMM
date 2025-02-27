@@ -1,4 +1,4 @@
-package org.smartmuseum.fortnitecompanion.ui.screens.cosmetics
+package org.smartmuseum.fortnitecompanion.ui.screens.stats
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

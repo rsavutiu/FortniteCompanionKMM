@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <string name="banners">Bannières</string>
+    <string name="shop">boutique</string>
+    <string name="overall">général</string>
+    <string name="solo">solo</string>
+    <string name="duo">duo</string>
+    <string name="squad">escouade</string>
+    <string name="ltm">MTL (Mode à Durée Limitée)</string>
     <string name="score">Score</string>
     <string name="scorePerMin">Score par min.</string>
     <string name="scorePerMatch">Score par match</string>

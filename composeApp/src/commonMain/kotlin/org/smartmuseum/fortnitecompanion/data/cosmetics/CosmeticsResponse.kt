@@ -174,6 +174,7 @@ data class Rarity(
 @Serializable
 data class Series(
     val value: String,
+    val displayValue: String? = null,
     val image: String? =null,
     val colors: List<String>? = null,
     val backendValue: String

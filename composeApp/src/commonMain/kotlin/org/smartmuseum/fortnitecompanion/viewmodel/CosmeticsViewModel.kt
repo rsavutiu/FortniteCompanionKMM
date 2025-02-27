@@ -24,7 +24,8 @@ class CosmeticsViewModel : ViewModel(), KoinComponent {
         getCosmeticsUseCase.cosmeticNetworkStatusMap
 
     private val _fullDetailCosmetic = MutableStateFlow<ICosmetic?>(null)
-    var fullDetailCosmetic: StateFlow<ICosmetic?> = _fullDetailCosmetic
+    val fullDetailCosmetic: StateFlow<ICosmetic?> = _fullDetailCosmetic
+    val bannerNetworkStatus = getCosmeticsUseCase.bannerNetworkStatus
 
     init {
         kmLog.i { "init instance ${this.toString()}" }
@@ -36,6 +37,12 @@ class CosmeticsViewModel : ViewModel(), KoinComponent {
         refresh[CosmeticEnum.BEANS] = ::getBeanCosmetics
         refresh[CosmeticEnum.TRACKS] = ::getTracksCosmetics
         refresh[CosmeticEnum.INSTRUMENTS] = ::getInstrumentsCosmetics
+    }
+
+    fun getBanners() {
+        viewModelScope.launch(Dispatchers.IO) {
+            getCosmeticsUseCase.getBanners()
+        }
     }
 
     fun getBattleRoyaleCosmetics() {
