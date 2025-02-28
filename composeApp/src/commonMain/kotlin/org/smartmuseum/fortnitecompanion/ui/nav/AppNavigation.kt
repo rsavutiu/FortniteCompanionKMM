@@ -1,19 +1,8 @@
 package org.smartmuseum.fortnitecompanion.ui.nav
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.NavigationDrawerItem
-import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,13 +12,9 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.compose.rememberNavController
 import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 import org.lighthousegames.logging.KmLog
@@ -43,6 +28,7 @@ enum class Screen {
     FULL_COSMETIC,
     FIND_PLAYER_STATS,
     LOADING,
+    MAP,
     BATTLE_ROYALE_COSMETICS,
     BANNERS,
     NO_INTERNET_CONNECTION,
@@ -51,6 +37,7 @@ enum class Screen {
 }
 
 enum class NavigationGraphs(val graph: String) {
+    MapGraph("map_graph"),
     CosmeticsGraph("cosmetics_graph"),
     PlayerStatsGraph("player_stats_graph"),
     ShopGraph("shop_graph")
@@ -65,6 +52,7 @@ sealed class NavigationItem(val route: String) {
     data object AccountPrivate : NavigationItem(Screen.ACCOUNT_PRIVATE.name)
     data object BattleRoyaleCosmetics : NavigationItem(Screen.BATTLE_ROYALE_COSMETICS.name)
     data object Banners : NavigationItem(Screen.BANNERS.name)
+    data object Map : NavigationItem(Screen.MAP.name)
     data object Loading : NavigationItem(Screen.LOADING.name)
     data object FailedShop : NavigationItem(Screen.FAILED_SHOP.name)
     data object NoInternetConnection : NavigationItem(Screen.NO_INTERNET_CONNECTION.name)
@@ -130,92 +118,6 @@ fun AppNavHost(
             drawerState = drawerState,
             appTitle = appBarTitle
         )
-    }
-}
-
-@Composable
-fun drawerContent(
-    navController: NavController,
-    drawerState: DrawerState,
-    coroutineScope: CoroutineScope,
-    currentDestination: MutableState<Pair<String?, String?>>
-) {
-    ModalDrawerSheet(
-        drawerState = drawerState,
-        drawerContentColor = MaterialTheme.colorScheme.onSurface,
-        drawerContainerColor = MaterialTheme.colorScheme.surface
-    ) {
-        Column {
-            NavBarHeader()
-            NavigationDrawerItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.ShoppingCart,
-                        contentDescription = stringResource(resources.strings.shop),
-                    )
-                },
-                label = { Text(text = stringResource(resources.strings.shop)) },
-                selected = currentDestination.value.second == NavigationGraphs.ShopGraph.graph,
-                onClick = {
-                    navController.navigate(route = NavigationGraphs.ShopGraph.graph)
-                    navController.navigate(NavigationItem.Shop.route)
-                    coroutineScope.launch {
-                        drawerState.close()
-                    }
-                }
-            )
-            NavigationDrawerItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = stringResource(resources.strings.search),
-                    )
-                },
-                label = { Text(text = stringResource(resources.strings.search)) },
-                selected = currentDestination.value.second == NavigationGraphs.PlayerStatsGraph.graph,
-                onClick = {
-                    navController.navigate(route = NavigationGraphs.PlayerStatsGraph.graph)
-                    navController.navigate(NavigationItem.FindPlayerStats.route)
-                    coroutineScope.launch {
-                        drawerState.close()
-                    }
-                }
-            )
-            NavigationDrawerItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.Edit,
-                        contentDescription = stringResource(resources.strings.cosmetics),
-                    )
-                },
-                label = { Text(text = stringResource(resources.strings.battle_royale_cosmetics)) },
-                selected = currentDestination.value.second == NavigationGraphs.PlayerStatsGraph.graph,
-                onClick = {
-                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
-                    navController.navigate(NavigationItem.BattleRoyaleCosmetics.route)
-                    coroutineScope.launch {
-                        drawerState.close()
-                    }
-                }
-            )
-            NavigationDrawerItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.Warning,
-                        contentDescription = stringResource(resources.strings.banners),
-                    )
-                },
-                label = { Text(text = stringResource(resources.strings.banners)) },
-                selected = currentDestination.value.second == NavigationGraphs.CosmeticsGraph.graph,
-                onClick = {
-                    navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
-                    navController.navigate(NavigationItem.Banners.route)
-                    coroutineScope.launch {
-                        drawerState.close()
-                    }
-                }
-            )
-        }
     }
 }
 

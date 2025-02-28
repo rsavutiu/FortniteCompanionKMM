@@ -36,6 +36,8 @@ import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticEnum
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticsUiData
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
+import org.smartmuseum.fortnitecompanion.data.map.MapResponse
+import org.smartmuseum.fortnitecompanion.data.shop.ShopResponse
 import org.smartmuseum.fortnitecompanion.networking.NetworkResult
 import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.screens.banners.BannersScreen
@@ -45,13 +47,14 @@ import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.LoadingScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.PlayerStatsScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.generic.ErrorScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.generic.NoInternetScreen
+import org.smartmuseum.fortnitecompanion.ui.screens.map.MapScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.shop.ShopScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.stats.AccountNotFound
 import org.smartmuseum.fortnitecompanion.ui.screens.stats.FindPlayerStatsScreen
 import org.smartmuseum.fortnitecompanion.usecases.FindStatsResult
-import org.smartmuseum.fortnitecompanion.usecases.GetShopResult
 import org.smartmuseum.fortnitecompanion.viewmodel.CosmeticsViewModel
 import org.smartmuseum.fortnitecompanion.viewmodel.FindPlayerStatsViewModel
+import org.smartmuseum.fortnitecompanion.viewmodel.MapViewModel
 import org.smartmuseum.fortnitecompanion.viewmodel.ShopViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,15 +66,17 @@ fun NavHost(
     coroutineScope: CoroutineScope,
     startDestination: String,
     drawerState: DrawerState,
-    appTitle: State<StringResource>
+    appTitle: State<StringResource>,
 ) {
     val log: KmLog = koinInject<KmLog> { parametersOf("AppNavHost") }
     val connectivity = koinInject<Konnectivity>()
     val isConnected: State<Boolean> = connectivity.isConnectedState.collectAsState()
     val shopViewModel: ShopViewModel = viewModel()
     val cosmeticsViewModel: CosmeticsViewModel = viewModel()
+    val mapViewModel: MapViewModel = viewModel()
     val findPlayerStatsViewModel: FindPlayerStatsViewModel = viewModel()
-    val shopValue: GetShopResult = shopViewModel.shopResult.collectAsState().value
+    val shopValue: NetworkResult<ShopResponse> = shopViewModel.shopResult.collectAsState().value
+    val mapValue: NetworkResult<MapResponse> = mapViewModel.mapResult.collectAsState().value
     val bannerResponse: NetworkResult<BannerResponse> =
         cosmeticsViewModel.bannerNetworkStatus.collectAsState().value
     coroutineScope.launch {
@@ -172,13 +177,32 @@ fun NavHost(
                 composable(route = NavigationItem.FailedShop.route) { NoInternetScreen() }
                 composable(route = NavigationItem.Loading.route) { LoadingScreen() }
                 composable(route = NavigationItem.Shop.route) {
-                    if (shopValue is GetShopResult.Success) {
+                    if (shopValue is NetworkResult.Success) {
                         log.i { "Composable shop recompose2 $shopValue" }
                         ShopScreen(
-                            shopResponse = shopValue.stats,
+                            shopResponse = shopValue.data,
                         )
                     } else {
                         navController.navigate(NavigationItem.FailedShop.route)
+                    }
+                }
+            }
+            navigation(
+                startDestination = NavigationItem.Map.route,
+                route = NavigationGraphs.MapGraph.graph
+            ) {
+                composable(route = NavigationItem.Map.route)
+                {
+                    mapViewModel.load()
+                    when (mapValue) {
+                        is NetworkResult.Error -> ErrorScreen { mapViewModel.load() }
+                        NetworkResult.Loading -> LoadingScreen()
+                        NetworkResult.Ready -> {
+                            NoInternetScreen()
+                            mapViewModel.load()
+                        }
+
+                        is NetworkResult.Success -> MapScreen(mapResponse = mapValue.data)
                     }
                 }
             }
@@ -282,7 +306,7 @@ private fun navigateManuallyToScreenAndLog(
     log: KmLog,
     navController: NavHostController,
     graph: String?,
-    route: String
+    route: String,
 ) {
     log.i(
         tag = "AppNavigation",

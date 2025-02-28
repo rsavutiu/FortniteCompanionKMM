@@ -11,7 +11,7 @@ data class MapResponse(
 @Serializable
 data class MapData(
     val images: MapImages,
-    val poi: List<Poi>? = null
+    val pois: List<Poi>? = null,
 )
 
 @Serializable
@@ -23,12 +23,12 @@ data class MapImages(
 @Serializable
 data class Poi(
     val id: String,
-    val name: String,
-    val location: Location
+    val name: String? = null,
+    val location: Location? = null,
 )
 
 @Serializable
 data class Location(
-    val x: Int,
-    val y: Int
+    val x: Float,
+    val y: Float,
 )

@@ -13,6 +13,8 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.serialization.json.Json
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
@@ -27,6 +29,7 @@ import org.smartmuseum.fortnitecompanion.networking.ResponseConverter
 import org.smartmuseum.fortnitecompanion.networking.createFortniteApiInterface
 import org.smartmuseum.fortnitecompanion.usecases.FindStatsUseCase
 import org.smartmuseum.fortnitecompanion.usecases.GetCosmeticsUseCase
+import org.smartmuseum.fortnitecompanion.usecases.GetMapUseCase
 import org.smartmuseum.fortnitecompanion.usecases.GetShopDataUseCase
 import org.smartmuseum.fortnitecompanion.utils.ExternalIntents
 import org.smartmuseum.fortnitecompanion.utils.TextUtils
@@ -101,7 +104,16 @@ val commonModule = module {
     single<GetShopDataUseCase> {
         GetShopDataUseCase(
             fortniteApi = get(),
-            language = FortniteAPISupportedLanguages.getSupportedLanguage(Locale.current.language)
+            language = FortniteAPISupportedLanguages.getSupportedLanguage(Locale.current.language),
+            coroutineContext = Dispatchers.IO
+        )
+    }
+
+    single<GetMapUseCase> {
+        GetMapUseCase(
+            fortniteApi = get(),
+            language = FortniteAPISupportedLanguages.getSupportedLanguage(Locale.current.language),
+            coroutineContext = Dispatchers.IO
         )
     }
 

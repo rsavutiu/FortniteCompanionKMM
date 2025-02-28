@@ -6,17 +6,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.smartmuseum.fortnitecompanion.data.shop.ShopResponse
+import org.smartmuseum.fortnitecompanion.data.map.MapResponse
 import org.smartmuseum.fortnitecompanion.networking.NetworkResult
-import org.smartmuseum.fortnitecompanion.usecases.GetShopDataUseCase
+import org.smartmuseum.fortnitecompanion.usecases.GetMapUseCase
 
-class ShopViewModel : ViewModel(), KoinComponent {
-    private val getShopDataUseCase: GetShopDataUseCase by inject()
-    val shopResult: StateFlow<NetworkResult<ShopResponse>> = getShopDataUseCase.result
+class MapViewModel : ViewModel(), KoinComponent {
+    private val getMapUseCase: GetMapUseCase by inject()
+    val mapResult: StateFlow<NetworkResult<MapResponse>> = getMapUseCase.result
 
-    init {
+    fun load() {
         viewModelScope.launch {
-            getShopDataUseCase.load()
+            getMapUseCase.load()
         }
     }
 }
