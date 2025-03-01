@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">通常価格: %s</string>
+    <string name="final_price">最終価格: %s</string>
     <string name="type_prefix">タイプ：</string>
     <string name="rarity_prefix">レアリティ：</string>
     <string name="banners">バナー</string>
@@ -130,7 +132,7 @@
     <string name="loser">"敗者"</string>
     <string name="favorites">"お気に入り"</string>
     <string name="menu">"メニュー"</string>
-    <string name="app_name">"AoE4ヘルパー"</string>
+    <string name="app_name">"Fortniteヘルパー"</string>
     <string name="camera">"カメラ"</string>
     <string name="leaderboard">"リーダーボード"</string>
     <string name="no_internet_connection">インターネット接続なし</string>

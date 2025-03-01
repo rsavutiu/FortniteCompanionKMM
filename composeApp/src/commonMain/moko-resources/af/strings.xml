@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">Gewone Prys: %s</string>
+    <string name="final_price">Finale Prys: %s</string>
     <string name="type_prefix">Tipe:</string>
     <string name="rarity_prefix">Skaarsheid:</string>
     <string name="banners">Banners</string>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">정가: %s</string>
+    <string name="final_price">최종 가격: %s</string>
     <string name="type_prefix">유형:</string>
     <string name="rarity_prefix">희귀성:</string>
     <string name="banners">배너</string>

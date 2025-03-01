@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <string name="regular_price">Prezzo Regolare: %s</string>
+    <string name="final_price">Prezzo Finale: %s</string>
     <string name="type_prefix">Tipo:</string>
     <string name="rarity_prefix">Rarità:</string>
     <string name="banners">Banner</string>
@@ -136,5 +138,5 @@
     <string name="leaderboard">"Classifica"</string>
     <string name="time_played">Tempo giocato</string>
     <string name="no_internet_connection">Nessuna Connessione Internet</string>
-    <string name="webview_url">https://aoe4world.com/players/%d</string>
+    <string name="webview_url">https://Fortniteworld.com/players/%d</string>
 </resources>

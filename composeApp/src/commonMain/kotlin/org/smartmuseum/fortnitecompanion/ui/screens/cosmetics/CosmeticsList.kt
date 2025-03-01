@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticType
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
 import org.smartmuseum.fortnitecompanion.resources
-import org.smartmuseum.fortnitecompanion.ui.CosmeticItem
+import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -88,8 +88,7 @@ fun CosmeticsList(
                                 text = {
                                     Text(
                                         modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
-                                        text = it?.displayValue ?: it?.value
-                                        ?: stringResource(resources.strings.unknown_tab),
+                                        text = it?.displayValue ?: it?.value ?: "-|_|-",
                                         fontSize = MaterialTheme.typography.titleMedium.fontSize
                                     )
                                 },
@@ -120,7 +119,8 @@ fun CosmeticsList(
                         modifier.fillMaxSize(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        cosmeticsByType[cosmeticTypes[innerPage]]!!.forEach { cosmetic ->
+                        cosmeticsByType[cosmeticTypes[innerPage]]!!.filter { it.getNameOrId() != "null" }
+                            .forEach { cosmetic ->
                             item {
                                 CosmeticItem(
                                     navController = navController,

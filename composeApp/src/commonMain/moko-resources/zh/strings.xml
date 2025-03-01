@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">常规价格: %s</string>
+    <string name="final_price">最终价格: %s</string>
     <string name="type_prefix">类型:</string>
     <string name="rarity_prefix">稀有度:</string>
     <string name="banners">横幅</string>

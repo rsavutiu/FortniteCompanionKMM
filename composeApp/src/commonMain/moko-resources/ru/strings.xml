@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">Обычная цена: %s</string>
+    <string name="final_price">Окончательная цена: %s</string>
     <string name="type_prefix">Тип:</string>
     <string name="rarity_prefix">Редкость:</string>
     <string name="banners">Баннеры</string>
@@ -130,7 +132,7 @@
     <string name="loser">"Неудачник"</string>
     <string name="favorites">"Избранное"</string>
     <string name="menu">"Меню"</string>
-    <string name="app_name">"AoE4Помощник"</string>
+    <string name="app_name">"FortniteПомощник"</string>
     <string name="camera">"Камера"</string>
     <string name="leaderboard">"Таблица лидеров"</string>
     <string name="no_internet_connection">Нет подключения к Интернету</string>

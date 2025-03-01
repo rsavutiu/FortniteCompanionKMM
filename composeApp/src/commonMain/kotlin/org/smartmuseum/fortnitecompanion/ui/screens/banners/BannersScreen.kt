@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.ui.CosmeticItem
+import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
 
 @Composable
 fun BannersScreen(
@@ -14,7 +14,7 @@ fun BannersScreen(
     onSelectCosmetic: (ICosmetic) -> Unit
 ) {
     LazyColumn {
-        for (banner in bannerResponse.data) {
+        for (banner in bannerResponse.data.filter { it.getNameOrId() != "null" }) {
             item {
                 CosmeticItem(
                     navController = navController,

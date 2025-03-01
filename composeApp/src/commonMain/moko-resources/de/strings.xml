@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">Regulärer Preis: %s</string>
+    <string name="final_price">Endpreis: %s</string>
     <string name="type_prefix">Typ:</string>
     <string name="rarity_prefix">Seltenheit:</string>
     <string name="banners">Banner</string>

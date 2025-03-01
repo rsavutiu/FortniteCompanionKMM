@@ -1,4 +1,4 @@
-package org.smartmuseum.fortnitecompanion.ui
+package org.smartmuseum.fortnitecompanion.ui.molecules
 
 import VideoPlayer
 import androidx.compose.foundation.clickable

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="regular_price">नियमित मूल्य: %s</string>
+    <string name="final_price">अंतिम मूल्य: %s</string>
     <string name="type_prefix">प्रकार:</string>
     <string name="rarity_prefix">दुर्लभता:</string>
     <string name="banners">बैनर</string>
@@ -129,7 +131,7 @@
     <string name="loser">"परास्त"</string>
     <string name="favorites">"पसंदीदा"</string>
     <string name="menu">"मेन्यू"</string>
-    <string name="app_name">"AoE4हेल्पर"</string>
+    <string name="app_name">"Fortniteहेल्पर"</string>
     <string name="camera">"कैमरा"</string>
     <string name="leaderboard">"लीडरबोर्ड"</string>
     <string name="no_internet_connection">कोई इंटरनेट कनेक्शन नहीं</string>

@@ -16,7 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 import org.smartmuseum.fortnitecompanion.data.shop.ShopEntry
+import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.components.ImageSlider
 import org.smartmuseum.fortnitecompanion.utils.formatDate
 
@@ -37,18 +39,29 @@ fun ShopEntryItem(entry: ShopEntry) {
                 style = MaterialTheme.typography.titleLarge
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+            if (entry.regularPrice == entry.finalPrice) {
                 Text(
-                    text = "Regular Price: ${entry.regularPrice}",
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(resources.strings.regular_price, "${entry.finalPrice}"),
                     style = MaterialTheme.typography.bodyLarge
                 )
-                Text(
-                    text = "Final Price: ${entry.finalPrice}",
-                    style = MaterialTheme.typography.bodyLarge
-                )
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(
+                            resources.strings.regular_price,
+                            "${entry.regularPrice}"
+                        ),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = stringResource(resources.strings.final_price, "${entry.finalPrice}"),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
             }
             Spacer(modifier = Modifier.height(4.dp))
             entry.offerTag?.let { offerTag ->
@@ -121,7 +134,8 @@ fun ShopEntryItem(entry: ShopEntry) {
                 Spacer(modifier = Modifier.height(8.dp))
                 TrackItem(track = track)
             }
-            ImageSlider(modifier = Modifier.height(350.dp).fillMaxWidth(),
+            ImageSlider(
+                modifier = Modifier.height(350.dp).fillMaxWidth(),
                 listOfUrls = entry.newDisplayAsset?.renderImages?.map { it.image }?.filterNotNull()
                     ?: emptyList()
             )
