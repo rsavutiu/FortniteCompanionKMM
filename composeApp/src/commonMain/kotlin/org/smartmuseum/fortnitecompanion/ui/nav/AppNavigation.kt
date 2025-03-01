@@ -86,6 +86,7 @@ fun AppNavHost(
             NavigationItem.AccountPrivate.route -> resources.strings.account_private
             NavigationItem.Loading.route -> resources.strings.loading
             NavigationItem.Shop.route -> resources.strings.shop
+            NavigationItem.Map.route -> resources.strings.map
             NavigationItem.NoInternetConnection.route -> resources.strings.no_internet_connection
             else -> resources.strings.app_name
         }

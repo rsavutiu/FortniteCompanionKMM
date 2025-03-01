@@ -10,7 +10,7 @@ import org.smartmuseum.fortnitecompanion.data.cosmetics.Rarity
 import org.smartmuseum.fortnitecompanion.data.generic.CosmeticsSet
 import org.smartmuseum.fortnitecompanion.data.generic.Images
 import org.smartmuseum.fortnitecompanion.data.generic.Introduction
-import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
+import org.smartmuseum.fortnitecompanion.ui.CosmeticItem
 import org.smartmuseum.fortnitecompanion.ui.themes.AppTheme
 
 @Preview(showBackground = true)

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <string name="type_prefix">Tipo:</string>
+    <string name="rarity_prefix">Rarità:</string>
     <string name="banners">Banner</string>
     <string name="shop">negozio</string>
     <string name="overall">generale</string>

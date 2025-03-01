@@ -16,7 +16,7 @@ import org.smartmuseum.fortnitecompanion.data.generic.Introduction
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.CosmeticsList
 import org.smartmuseum.fortnitecompanion.ui.themes.AppTheme
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun CosmeticsListPreview() {
     AppTheme {

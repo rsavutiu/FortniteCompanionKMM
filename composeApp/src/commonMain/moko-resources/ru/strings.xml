@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="type_prefix">Тип:</string>
+    <string name="rarity_prefix">Редкость:</string>
     <string name="banners">Баннеры</string>
     <string name="shop">магазин (magazin)</string>
     <string name="overall">в целом (v tselom)</string>

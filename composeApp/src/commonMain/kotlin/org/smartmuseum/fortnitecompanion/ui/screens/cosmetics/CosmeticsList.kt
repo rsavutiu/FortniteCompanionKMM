@@ -1,6 +1,5 @@
-package org.smartmuseum.fortnitecompanion.ui.screens.cosmetics;
+package org.smartmuseum.fortnitecompanion.ui.screens.cosmetics
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,11 +23,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticType
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
+import org.smartmuseum.fortnitecompanion.resources
+import org.smartmuseum.fortnitecompanion.ui.CosmeticItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,7 +44,6 @@ fun CosmeticsList(
     val tabs = cosmeticsMap.keys.toList()
     Column(
         modifier = Modifier.fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.surface)
     ) {
         if (tabs.size > 1) {
             ScrollableTabRow(selectedTabIndex = pagerState.currentPage) {
@@ -53,7 +53,7 @@ fun CosmeticsList(
                         onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                         text = {
                             Text(
-                                it ?: "-|_|-",
+                                it ?: stringResource(resources.strings.unknown_tab),
                                 fontSize = MaterialTheme.typography.titleLarge.fontSize
                             )
                         },
@@ -88,7 +88,8 @@ fun CosmeticsList(
                                 text = {
                                     Text(
                                         modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
-                                        text = it?.displayValue ?: it?.value ?: "-|_|-",
+                                        text = it?.displayValue ?: it?.value
+                                        ?: stringResource(resources.strings.unknown_tab),
                                         fontSize = MaterialTheme.typography.titleMedium.fontSize
                                     )
                                 },

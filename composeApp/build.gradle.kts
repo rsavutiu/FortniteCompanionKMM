@@ -53,7 +53,7 @@ kotlin {
             //        iosSimulatorArm64()
         ).forEach { iosTarget ->
             iosTarget.binaries.framework {
-                baseName = "SharedFramework"
+                baseName = "composeApp"
                 isStatic = true
                 binaryOption("bundleId", "org.smartmuseum.fortnitecompanion.shared")
                 binaryOption("bundleVersion", "1")

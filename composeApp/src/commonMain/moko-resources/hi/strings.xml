@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="type_prefix">प्रकार:</string>
+    <string name="rarity_prefix">दुर्लभता:</string>
     <string name="banners">बैनर</string>
     <string name="shop">दुकान (dukaan)</string>
     <string name="overall">कुल (kul)</string>

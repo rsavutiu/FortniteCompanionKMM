@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
+import org.smartmuseum.fortnitecompanion.ui.CosmeticItem
 
 @Composable
 fun BannersScreen(
