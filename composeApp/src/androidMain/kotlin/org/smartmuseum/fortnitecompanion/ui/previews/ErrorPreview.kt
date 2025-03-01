@@ -7,7 +7,5 @@ import org.smartmuseum.fortnitecompanion.ui.screens.generic.ErrorScreen
 @Preview
 @Composable
 fun ErrorPreview() {
-    ErrorScreen {
-
-    }
+    ErrorScreen {}
 }

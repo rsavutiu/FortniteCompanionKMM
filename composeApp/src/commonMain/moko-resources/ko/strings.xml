@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="type_prefix">유형:</string>
+    <string name="rarity_prefix">희귀성:</string>
     <string name="banners">배너</string>
     <string name="shop">상점 (sangjeom)</string>
     <string name="overall">전체 (jeonche)</string>

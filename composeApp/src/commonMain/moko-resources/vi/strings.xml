@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="type_prefix">Loại:</string>
+    <string name="rarity_prefix">Độ hiếm:</string>
     <string name="banners">Biểu ngữ</string>
     <string name="shop">cửa hàng</string>
     <string name="overall">tổng thể</string>

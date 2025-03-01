@@ -1,34 +1,4 @@
-package org.smartmuseum.fortnitecompanion.ui.screens.cosmetics;
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ScrollableTabRow
-import androidx.compose.material3.Tab
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import dev.icerock.moko.resources.ImageResource
-import dev.icerock.moko.resources.compose.painterResource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticType
-import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
+import dev.icerock.moko.resources.compose.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,7 +13,6 @@ fun CosmeticsList(
     val tabs = cosmeticsMap.keys.toList()
     Column(
         modifier = Modifier.fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.surface)
     ) {
         if (tabs.size > 1) {
             ScrollableTabRow(selectedTabIndex = pagerState.currentPage) {
@@ -53,7 +22,7 @@ fun CosmeticsList(
                         onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                         text = {
                             Text(
-                                it ?: "-|_|-",
+                                it ?: stringResource(MR.strings.default_tab),
                                 fontSize = MaterialTheme.typography.titleLarge.fontSize
                             )
                         },
@@ -88,7 +57,8 @@ fun CosmeticsList(
                                 text = {
                                     Text(
                                         modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
-                                        text = it?.displayValue ?: it?.value ?: "-|_|-",
+                                        text = it?.displayValue ?: it?.value
+                                        ?: stringResource(MR.strings.default_tab),
                                         fontSize = MaterialTheme.typography.titleMedium.fontSize
                                     )
                                 },

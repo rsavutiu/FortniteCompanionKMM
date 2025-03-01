@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <string name="unknown_tab" translatable="false">¯\_(ツ)_/¯</string>
+    <string name="type_prefix">Type:</string>
+    <string name="rarity_prefix">Rarity:</string>
     <string name="banners">Banners</string>
     <string name="shop">Shop</string>
     <string name="overall">Overall</string>

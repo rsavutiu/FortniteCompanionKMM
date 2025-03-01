@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="type_prefix">类型:</string>
+    <string name="rarity_prefix">稀有度:</string>
     <string name="banners">横幅</string>
     <string name="shop">商店 (shāngdiàn)</string>
     <string name="overall">总体 (zǒngtǐ)</string>

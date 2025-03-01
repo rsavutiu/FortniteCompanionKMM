@@ -1,7 +1,5 @@
-package org.smartmuseum.fortnitecompanion.ui.molecules
-
-import VideoPlayer
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,7 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.compose.stringResource
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
+import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.nav.NavigationItem
 import org.smartmuseum.fortnitecompanion.ui.themes.fortniteFontFamily
 import org.smartmuseum.fortnitecompanion.utils.getRelativeTimeText
@@ -31,7 +31,7 @@ fun CosmeticItem(
     navController: NavController,
     fortniteCosmetic: ICosmetic,
     useSmallIcon: Boolean = false,
-    onSelectCosmetic: (ICosmetic) -> Unit = {}
+    onSelectCosmetic: (ICosmetic) -> Unit = {},
 ) {
     Card(
         modifier = Modifier
@@ -50,14 +50,14 @@ fun CosmeticItem(
             disabledContentColor = MaterialTheme.colorScheme.inverseOnSurface
         )
     ) {
-        Column {
+        Column(verticalArrangement = Arrangement.Center) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Image
                 val imageModifier = Modifier
-                    .size(if (useSmallIcon) 64.dp else 128.dp) // M3 standard sizes
+                    .size(128.dp)
                     .defaultMinSize(minHeight = 50.dp)
 
                 if (useSmallIcon) {
@@ -80,7 +80,12 @@ fun CosmeticItem(
 
                 Spacer(modifier = Modifier.width(8.dp)) // M3 min spacing
                 // Text Information
-                Column {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(vertical = 8.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
                     Text(
                         modifier = Modifier.padding(bottom = 4.dp),
                         text = fortniteCosmetic.getNameOrId(),
@@ -97,14 +102,14 @@ fun CosmeticItem(
                     fortniteCosmetic.getCosmeticType()?.let {
                         Text(
                             modifier = Modifier.padding(bottom = 4.dp),
-                            text = "Type: ${it.displayValue}",
+                            text = stringResource(resources.strings.type_prefix) + it.displayValue,
                             style = MaterialTheme.typography.labelLarge,
                         )
                     }
                     fortniteCosmetic.getCosmeticRarity()?.let {
                         Text(
                             modifier = Modifier.padding(bottom = 4.dp),
-                            text = "Rarity: ${it.displayValue}",
+                            text = stringResource(resources.strings.rarity_prefix) + it.displayValue,
                             style = MaterialTheme.typography.labelMedium,
                         )
                     }
@@ -122,7 +127,6 @@ fun CosmeticItem(
                             style = MaterialTheme.typography.labelSmall, // M3 body
                         )
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
             // Video (if available)

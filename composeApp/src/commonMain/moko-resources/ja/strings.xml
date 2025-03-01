@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="type_prefix">タイプ：</string>
+    <string name="rarity_prefix">レアリティ：</string>
     <string name="banners">バナー</string>
     <string name="shop">ショップ (shoppu)</string>
     <string name="overall">全体 (zentai)</string>
