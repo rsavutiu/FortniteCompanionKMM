@@ -14,7 +14,13 @@ actual fun KMMSharedPrefs.setInt(key: String, value: Int) {
 }
 
 actual fun KMMSharedPrefs.getIntList(key: String): List<Int> {
-    return NSUserDefaults.standardUserDefaults.objectForKey(key) as List<Int>
+    val userDefaults = NSUserDefaults.standardUserDefaults
+    val value = userDefaults.objectForKey(key)
+    return if (value is List<*>) {
+        value.filterIsInstance<Int>()
+    } else {
+        emptyList() // Or a default list if appropriate
+    }
 }
 
 actual fun KMMSharedPrefs.setIntList(

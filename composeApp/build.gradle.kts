@@ -28,6 +28,7 @@ kotlin {
             }
         }
     }
+    iosX64()
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -138,6 +139,8 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.jetbrains.kotlinx.coroutines.test)
+        }
+        jvmTest.dependencies {
             implementation(libs.mockk)
         }
     }
@@ -209,3 +212,21 @@ multiplatformResources {
     iosBaseLocalizationRegion = "en" // optional, default "en"
 }
 
+val syncFramework = tasks.create("syncFramework", Sync::class) {
+    group = "build"
+    val framework =
+        kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>("iosX64").binaries.getFramework(
+            "debug"
+        )
+    val targetDir = File(buildDir, "xcode-frameworks")
+    val frameworkDir = File(targetDir, framework.name)
+
+    inputs.dir(framework.outputDirectory)
+    outputs.dir(targetDir)
+
+    from({ framework.outputDirectory })
+    into(frameworkDir)
+
+    dependsOn(framework.linkTaskProvider)
+//    dependsOn("copyFrameworkResourcesToApp")
+}
