@@ -21,14 +21,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import dev.icerock.moko.resources.ImageResource
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.unknown_tab
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticType
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.molecules.CosmeticItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,7 +54,7 @@ fun CosmeticsList(
                         onClick = { coroutineScope.launch { pagerState.animateScrollToPage(index) } },
                         text = {
                             Text(
-                                it ?: stringResource(resources.strings.unknown_tab),
+                                it ?: stringResource(Res.string.unknown_tab),
                                 fontSize = MaterialTheme.typography.titleLarge.fontSize
                             )
                         },
@@ -93,7 +94,7 @@ fun CosmeticsList(
                                     )
                                 },
                                 icon = {
-                                    it?.getCosmeticTypeImage()?.let { type: ImageResource ->
+                                    it?.getCosmeticTypeImage()?.let { type: DrawableResource ->
                                         Column(modifier = Modifier.height(24.dp)) {
                                             Spacer(modifier = Modifier.height(4.dp))
                                             Icon(

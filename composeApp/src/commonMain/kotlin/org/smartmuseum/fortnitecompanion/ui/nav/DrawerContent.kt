@@ -14,11 +14,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.navigation.NavController
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.banners
+import fortnitecompanionapp.composeapp.generated.resources.battle_royale_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.flag_icon
+import fortnitecompanionapp.composeapp.generated.resources.map
+import fortnitecompanionapp.composeapp.generated.resources.map_icon
+import fortnitecompanionapp.composeapp.generated.resources.search
+import fortnitecompanionapp.composeapp.generated.resources.shop
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import org.smartmuseum.fortnitecompanion.resources
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun drawerContent(
@@ -38,10 +46,10 @@ fun drawerContent(
                 icon = {
                     Icon(
                         imageVector = Icons.Filled.ShoppingCart,
-                        contentDescription = stringResource(resources.strings.shop),
+                        contentDescription = stringResource(Res.string.shop),
                     )
                 },
-                label = { Text(text = stringResource(resources.strings.shop)) },
+                label = { Text(text = stringResource(Res.string.shop)) },
                 selected = currentDestination.value.second == NavigationGraphs.ShopGraph.graph,
                 onClick = {
                     navController.navigate(route = NavigationGraphs.ShopGraph.graph)
@@ -55,10 +63,10 @@ fun drawerContent(
                 icon = {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = stringResource(resources.strings.search),
+                        contentDescription = stringResource(Res.string.search),
                     )
                 },
-                label = { Text(text = stringResource(resources.strings.search)) },
+                label = { Text(text = stringResource(Res.string.search)) },
                 selected = currentDestination.value.second == NavigationGraphs.PlayerStatsGraph.graph,
                 onClick = {
                     navController.navigate(route = NavigationGraphs.PlayerStatsGraph.graph)
@@ -72,10 +80,10 @@ fun drawerContent(
                 icon = {
                     Icon(
                         imageVector = Icons.Filled.Edit,
-                        contentDescription = stringResource(resources.strings.cosmetics),
+                        contentDescription = stringResource(Res.string.cosmetics),
                     )
                 },
-                label = { Text(text = stringResource(resources.strings.battle_royale_cosmetics)) },
+                label = { Text(text = stringResource(Res.string.battle_royale_cosmetics)) },
                 selected = currentDestination.value.second == NavigationGraphs.PlayerStatsGraph.graph,
                 onClick = {
                     navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
@@ -89,11 +97,11 @@ fun drawerContent(
                 icon = {
                     Icon(
                         painter =
-                        painterResource(resources.images.flag_icon),
-                        contentDescription = stringResource(resources.strings.banners),
+                        painterResource(Res.drawable.flag_icon),
+                        contentDescription = stringResource(Res.string.banners),
                     )
                 },
-                label = { Text(text = stringResource(resources.strings.banners)) },
+                label = { Text(text = stringResource(Res.string.banners)) },
                 selected = currentDestination.value.first == NavigationItem.Banners.route,
                 onClick = {
                     navController.navigate(route = NavigationGraphs.CosmeticsGraph.graph)
@@ -107,11 +115,11 @@ fun drawerContent(
                 icon = {
                     Icon(
                         painter =
-                        painterResource(resources.images.map_icon),
-                        contentDescription = stringResource(resources.strings.map),
+                        painterResource(Res.drawable.map_icon),
+                        contentDescription = stringResource(Res.string.map),
                     )
                 },
-                label = { Text(text = stringResource(resources.strings.map)) },
+                label = { Text(text = stringResource(Res.string.map)) },
                 selected = currentDestination.value.second == NavigationGraphs.MapGraph.graph,
                 onClick = {
                     navController.navigate(route = NavigationGraphs.MapGraph.graph)

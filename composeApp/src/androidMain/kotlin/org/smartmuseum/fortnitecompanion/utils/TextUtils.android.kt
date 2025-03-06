@@ -1,8 +1,10 @@
 package org.smartmuseum.fortnitecompanion.utils
 
-import org.smartmuseum.fortnitecompanion.storage.KMMSharedPrefs
-import dev.icerock.moko.resources.StringResource
+import androidx.compose.runtime.Composable
 import io.ktor.utils.io.charsets.Charset
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
+import org.smartmuseum.fortnitecompanion.storage.KMMSharedPrefs
 
 actual fun String.format(vararg args: String): String {
     return java.lang.String.format(this, *args)
@@ -37,7 +39,8 @@ actual class TextUtils actual constructor() {
             }
     }
 
-    actual fun getString(sharedPrefs: KMMSharedPrefs, stringResource: StringResource): String {
-        return stringResource.getString(sharedPrefs)
+    @Composable
+    actual fun getString(sharedPrefs: KMMSharedPrefs, res: StringResource): String {
+        return stringResource(res)
     }
 }

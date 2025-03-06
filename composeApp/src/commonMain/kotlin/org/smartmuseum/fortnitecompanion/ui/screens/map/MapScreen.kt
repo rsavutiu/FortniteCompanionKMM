@@ -18,9 +18,9 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.IntSize
 import coil3.compose.AsyncImage
+import com.diamondedge.logging.KmLog
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
-import org.lighthousegames.logging.KmLog
 import org.smartmuseum.fortnitecompanion.data.map.MapResponse
 import org.smartmuseum.fortnitecompanion.utils.drawPoi
 import kotlin.math.max

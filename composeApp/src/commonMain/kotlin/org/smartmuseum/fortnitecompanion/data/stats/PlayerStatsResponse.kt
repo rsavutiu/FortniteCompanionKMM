@@ -1,11 +1,33 @@
 package org.smartmuseum.fortnitecompanion.data.stats
 
 import androidx.compose.runtime.Composable
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.all
+import fortnitecompanionapp.composeapp.generated.resources.deaths
+import fortnitecompanionapp.composeapp.generated.resources.duo
+import fortnitecompanionapp.composeapp.generated.resources.gamepad
+import fortnitecompanionapp.composeapp.generated.resources.kd
+import fortnitecompanionapp.composeapp.generated.resources.keyboardAndMouse
+import fortnitecompanionapp.composeapp.generated.resources.kills
+import fortnitecompanionapp.composeapp.generated.resources.killsPerMatch
+import fortnitecompanionapp.composeapp.generated.resources.killsPerMin
+import fortnitecompanionapp.composeapp.generated.resources.lastModified
+import fortnitecompanionapp.composeapp.generated.resources.ltm
+import fortnitecompanionapp.composeapp.generated.resources.matches
+import fortnitecompanionapp.composeapp.generated.resources.minutesPlayed
+import fortnitecompanionapp.composeapp.generated.resources.overall
+import fortnitecompanionapp.composeapp.generated.resources.playersOutlived
+import fortnitecompanionapp.composeapp.generated.resources.score
+import fortnitecompanionapp.composeapp.generated.resources.scorePerMatch
+import fortnitecompanionapp.composeapp.generated.resources.scorePerMin
+import fortnitecompanionapp.composeapp.generated.resources.solo
+import fortnitecompanionapp.composeapp.generated.resources.squad
+import fortnitecompanionapp.composeapp.generated.resources.touch
+import fortnitecompanionapp.composeapp.generated.resources.winRate
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
-import org.smartmuseum.fortnitecompanion.resources
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.utils.formatDate
 
 @Serializable
@@ -23,15 +45,15 @@ data class PlayerStatsData(
     @Composable
     fun getTabs(): List<Pair<String, StatsCategory>> {
         val ret: MutableList<Pair<String, StatsCategory>> = mutableListOf()
-        ret.add(Pair(stringResource(resources.strings.all), stats.all))
+        ret.add(Pair(stringResource(Res.string.all), stats.all))
         if (stats.keyboardMouse != null) {
-            ret.add(Pair(stringResource(resources.strings.keyboardAndMouse), stats.keyboardMouse))
+            ret.add(Pair(stringResource(Res.string.keyboardAndMouse), stats.keyboardMouse))
         }
         if (stats.touch != null) {
-            ret.add(Pair(stringResource(resources.strings.touch), stats.touch))
+            ret.add(Pair(stringResource(Res.string.touch), stats.touch))
         }
         if (stats.gamepad != null) {
-            ret.add(Pair(stringResource(resources.strings.gamepad), stats.gamepad))
+            ret.add(Pair(stringResource(Res.string.gamepad), stats.gamepad))
         }
         return ret
     }
@@ -69,11 +91,11 @@ data class StatsCategory(
     fun getNonnullStatsMap(): LinkedHashMap<String, StatsMode> {
         val statsMap = linkedMapOf<String, StatsMode>()
         val possibleStats: Map<String, StatsMode?> = mapOf(
-            stringResource(resources.strings.overall) to this.overall,
-            stringResource(resources.strings.solo) to this.solo,
-            stringResource(resources.strings.duo) to this.duo,
-            stringResource(resources.strings.squad) to this.squad,
-            stringResource(resources.strings.ltm) to this.ltm
+            stringResource(Res.string.overall) to this.overall,
+            stringResource(Res.string.solo) to this.solo,
+            stringResource(Res.string.duo) to this.duo,
+            stringResource(Res.string.squad) to this.squad,
+            stringResource(Res.string.ltm) to this.ltm
         )
         for (entry in possibleStats.entries) {
             entry.value?.let {
@@ -136,19 +158,19 @@ data class StatsMode(
 
     fun toMap(): HashMap<StringResource, String> {
         val ret: HashMap<StringResource, String> = hashMapOf()
-        ret[resources.strings.score] = score.toString()
-        ret[resources.strings.scorePerMin] = scorePerMin.toString()
-        ret[resources.strings.scorePerMatch] = scorePerMatch.toString()
-        ret[resources.strings.kills] = kills.toString()
-        ret[resources.strings.killsPerMin] = killsPerMin.toString()
-        ret[resources.strings.killsPerMatch] = killsPerMatch.toString()
-        ret[resources.strings.deaths] = deaths.toString()
-        ret[resources.strings.kd] = kd.toString()
-        ret[resources.strings.matches] = matches.toString()
-        ret[resources.strings.winRate] = winRate.toString()
-        ret[resources.strings.minutesPlayed] = minutesPlayed.toString()
-        ret[resources.strings.playersOutlived] = playersOutlived.toString()
-        ret[resources.strings.lastModified] = lastModified.formatDate("dd MMM yy HH:mm")
+        ret[Res.string.score] = score.toString()
+        ret[Res.string.scorePerMin] = scorePerMin.toString()
+        ret[Res.string.scorePerMatch] = scorePerMatch.toString()
+        ret[Res.string.kills] = kills.toString()
+        ret[Res.string.killsPerMin] = killsPerMin.toString()
+        ret[Res.string.killsPerMatch] = killsPerMatch.toString()
+        ret[Res.string.deaths] = deaths.toString()
+        ret[Res.string.kd] = kd.toString()
+        ret[Res.string.matches] = matches.toString()
+        ret[Res.string.winRate] = winRate.toString()
+        ret[Res.string.minutesPlayed] = minutesPlayed.toString()
+        ret[Res.string.playersOutlived] = playersOutlived.toString()
+        ret[Res.string.lastModified] = lastModified.formatDate("dd MMM yy HH:mm")
         return ret
     }
 }

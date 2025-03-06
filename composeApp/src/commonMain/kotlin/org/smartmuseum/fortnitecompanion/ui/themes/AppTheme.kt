@@ -11,8 +11,6 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import dev.icerock.moko.resources.compose.fontFamilyResource
-import org.smartmuseum.fortnitecompanion.resources
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -92,10 +90,7 @@ private val darkScheme = darkColorScheme(
 //    surfaceContainerHighest = surfaceContainerHighestDark,
 )
 
-val fortniteFontFamily: FontFamily
-    @Composable
-    get() = fontFamilyResource(resources.fonts.fortnite)
-
+expect val fortniteFontFamily: FontFamily
 
 val FortniteTypography
     @Composable // Composable is required for loading font from compose resources
@@ -168,19 +163,14 @@ fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
-    content: @Composable() () -> Unit
+    content: @Composable() () -> Unit,
 ) {
     val colorScheme = when {
-//      dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-//          val context = LocalContext.current
-//          if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-//      }
-
         darkTheme -> darkScheme
         else -> lightScheme
     }
 
-    androidx.compose.material3.MaterialTheme(
+    MaterialTheme(
         colorScheme = colorScheme,
         typography = FortniteTypography,
         content = content

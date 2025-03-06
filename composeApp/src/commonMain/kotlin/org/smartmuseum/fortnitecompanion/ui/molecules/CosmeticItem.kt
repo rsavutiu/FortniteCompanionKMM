@@ -22,9 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.rarity_prefix
+import fortnitecompanionapp.composeapp.generated.resources.type_prefix
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
-import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.nav.NavigationItem
 import org.smartmuseum.fortnitecompanion.ui.themes.fortniteFontFamily
 import org.smartmuseum.fortnitecompanion.utils.getRelativeTimeText
@@ -105,14 +107,14 @@ fun CosmeticItem(
                     fortniteCosmetic.getCosmeticType()?.let {
                         Text(
                             modifier = Modifier.padding(bottom = 4.dp),
-                            text = stringResource(resources.strings.type_prefix) + it.displayValue,
+                            text = stringResource(Res.string.type_prefix) + it.displayValue,
                             style = MaterialTheme.typography.labelLarge,
                         )
                     }
                     fortniteCosmetic.getCosmeticRarity()?.let {
                         Text(
                             modifier = Modifier.padding(bottom = 4.dp),
-                            text = stringResource(resources.strings.rarity_prefix) + it.displayValue,
+                            text = stringResource(Res.string.rarity_prefix) + it.displayValue,
                             style = MaterialTheme.typography.labelMedium,
                         )
                     }

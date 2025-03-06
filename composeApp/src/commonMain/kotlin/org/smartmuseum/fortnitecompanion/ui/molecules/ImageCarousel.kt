@@ -16,14 +16,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.icerock.moko.resources.ImageResource
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ImageCarousel(
     modifier: Modifier = Modifier,
-    images: List<ImageResource>,
-    autoScrollDuration: Long = 3000L
+    images: List<DrawableResource>,
+    autoScrollDuration: Long = 3000L,
 ) {
     val pagerState = rememberPagerState(pageCount = { images.size })
 
@@ -38,10 +39,10 @@ fun ImageCarousel(
             state = pagerState,
             modifier = Modifier.fillMaxSize()
         ) { page ->
-            val imageItem: ImageResource = images[page]
+            val imageItem: DrawableResource = images[page]
             Box(modifier = Modifier.fillMaxSize()) {
                 Image(
-                    painter = dev.icerock.moko.resources.compose.painterResource(imageItem),
+                    painter = painterResource(imageItem),
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop

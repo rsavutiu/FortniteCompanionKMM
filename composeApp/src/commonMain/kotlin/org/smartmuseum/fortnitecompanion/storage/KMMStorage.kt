@@ -1,9 +1,9 @@
 package org.smartmuseum.fortnitecompanion.storage
 
+import com.diamondedge.logging.KmLog
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
-import org.lighthousegames.logging.KmLog
 
 class KMMStorage(private val context: KMMSharedPrefs) : KoinComponent {
     private val logger: KmLog by inject { parametersOf("KMMStorage") }

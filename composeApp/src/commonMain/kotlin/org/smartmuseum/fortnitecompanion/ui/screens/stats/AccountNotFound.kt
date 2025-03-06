@@ -11,8 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.resources.compose.stringResource
-import org.smartmuseum.fortnitecompanion.resources
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.account_not_found
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AccountNotFound() {
@@ -24,7 +25,7 @@ fun AccountNotFound() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(resources.strings.account_not_found),
+            text = stringResource(Res.string.account_not_found),
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center
         )

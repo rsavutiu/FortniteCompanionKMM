@@ -1,15 +1,24 @@
 package org.smartmuseum.fortnitecompanion.data.cosmetics
 
-import dev.icerock.moko.resources.StringResource
-import org.smartmuseum.fortnitecompanion.resources
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.battle_royale_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.bean_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.cars_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.instruments_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.lego_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.lego_kits_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.new_cosmetics
+import fortnitecompanionapp.composeapp.generated.resources.tracks_cosmetics
+import org.jetbrains.compose.resources.StringResource
+
 
 enum class CosmeticEnum(val stringResource: StringResource) {
-    NEW(resources.strings.new_cosmetics),
-    BATTLE_ROYALE(resources.strings.battle_royale_cosmetics),
-    TRACKS(resources.strings.tracks_cosmetics),
-    CARS(resources.strings.cars_cosmetics),
-    BEANS(resources.strings.bean_cosmetics),
-    INSTRUMENTS(resources.strings.instruments_cosmetics),
-    LEGO(resources.strings.lego_cosmetics),
-    LEGO_KITS(resources.strings.lego_kits_cosmetics)
+    NEW(Res.string.new_cosmetics),
+    BATTLE_ROYALE(Res.string.battle_royale_cosmetics),
+    TRACKS(Res.string.tracks_cosmetics),
+    CARS(Res.string.cars_cosmetics),
+    BEANS(Res.string.bean_cosmetics),
+    INSTRUMENTS(Res.string.instruments_cosmetics),
+    LEGO(Res.string.lego_cosmetics),
+    LEGO_KITS(Res.string.lego_kits_cosmetics)
 }

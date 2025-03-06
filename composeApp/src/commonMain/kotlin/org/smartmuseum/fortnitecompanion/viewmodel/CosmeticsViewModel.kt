@@ -2,6 +2,7 @@ package org.smartmuseum.fortnitecompanion.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.diamondedge.logging.KmLog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +11,6 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
-import org.lighthousegames.logging.KmLog
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticEnum
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
 import org.smartmuseum.fortnitecompanion.networking.NetworkResult

@@ -5,9 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.diamondedge.logging.KmLog
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
-import org.lighthousegames.logging.KmLog
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticEnum
 import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
 import org.smartmuseum.fortnitecompanion.networking.NetworkResult

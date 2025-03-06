@@ -18,20 +18,20 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import com.plusmobileapps.konnectivity.Konnectivity
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
+import com.diamondedge.logging.KmLog
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.menu
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
-import org.lighthousegames.logging.KmLog
 import org.smartmuseum.fortnitecompanion.data.cosmetics.BannerResponse
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticEnum
 import org.smartmuseum.fortnitecompanion.data.cosmetics.CosmeticsUiData
@@ -39,7 +39,6 @@ import org.smartmuseum.fortnitecompanion.data.cosmetics.ICosmetic
 import org.smartmuseum.fortnitecompanion.data.map.MapResponse
 import org.smartmuseum.fortnitecompanion.data.shop.ShopResponse
 import org.smartmuseum.fortnitecompanion.networking.NetworkResult
-import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.screens.banners.BannersScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.CosmeticsTabs
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.FullCosmeticScreen
@@ -47,6 +46,7 @@ import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.LoadingScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.cosmetics.PlayerStatsScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.generic.ErrorScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.generic.NoInternetScreen
+import org.smartmuseum.fortnitecompanion.ui.screens.koinViewModel
 import org.smartmuseum.fortnitecompanion.ui.screens.map.MapScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.shop.ShopScreen
 import org.smartmuseum.fortnitecompanion.ui.screens.stats.AccountNotFound
@@ -69,12 +69,10 @@ fun NavHost(
     appTitle: State<StringResource>,
 ) {
     val log: KmLog = koinInject<KmLog> { parametersOf("AppNavHost") }
-    val connectivity = koinInject<Konnectivity>()
-    val isConnected: State<Boolean> = connectivity.isConnectedState.collectAsState()
-    val shopViewModel: ShopViewModel = viewModel()
-    val cosmeticsViewModel: CosmeticsViewModel = viewModel()
-    val mapViewModel: MapViewModel = viewModel()
-    val findPlayerStatsViewModel: FindPlayerStatsViewModel = viewModel()
+    val shopViewModel: ShopViewModel = koinViewModel()
+    val cosmeticsViewModel: CosmeticsViewModel = koinViewModel()
+    val mapViewModel: MapViewModel = koinViewModel()
+    val findPlayerStatsViewModel: FindPlayerStatsViewModel = koinViewModel()
     val shopValue: NetworkResult<ShopResponse> = shopViewModel.shopResult.collectAsState().value
     val mapValue: NetworkResult<MapResponse> = mapViewModel.mapResult.collectAsState().value
     val bannerResponse: NetworkResult<BannerResponse> =
@@ -157,7 +155,7 @@ fun NavHost(
                 }) {
                     Icon(
                         imageVector = Icons.Default.Menu,
-                        contentDescription = stringResource(resources.strings.menu),
+                        contentDescription = stringResource(Res.string.menu),
                         modifier = Modifier.padding(8.dp),
                         tint = MaterialTheme.colorScheme.onPrimary
                     )
@@ -293,13 +291,13 @@ fun NavHost(
         }
     }
 
-    LaunchedEffect(isConnected.value) {
-        if (!isConnected.value) {
-            navController.navigate(NavigationItem.NoInternetConnection.route)
-        } else {
-            navController.navigate(startDestination)
-        }
-    }
+//    LaunchedEffect(isConnected.value) {
+//        if (!isConnected.value) {
+//            navController.navigate(NavigationItem.NoInternetConnection.route)
+//        } else {
+//            navController.navigate(startDestination)
+//        }
+//    }
 }
 
 private fun navigateManuallyToScreenAndLog(

@@ -30,8 +30,11 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.icerock.moko.resources.compose.stringResource
-import org.smartmuseum.fortnitecompanion.resources
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.enter_the_exact_player_id
+import fortnitecompanionapp.composeapp.generated.resources.player_id
+import fortnitecompanionapp.composeapp.generated.resources.search
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.ui.themes.fortniteFontFamily
 
 @Composable
@@ -52,7 +55,7 @@ fun FindPlayerStatsScreen(
 
     ) {
         Text(
-            text = stringResource(resources.strings.enter_the_exact_player_id),
+            text = stringResource(Res.string.enter_the_exact_player_id),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(bottom = 16.dp)
         )
@@ -66,7 +69,7 @@ fun FindPlayerStatsScreen(
             ),
             value = query,
             onValueChange = { query = it },
-            label = { Text(stringResource(resources.strings.player_id)) },
+            label = { Text(stringResource(Res.string.player_id)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp),
@@ -86,7 +89,7 @@ fun FindPlayerStatsScreen(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Search,
-                    contentDescription = stringResource(resources.strings.search)
+                    contentDescription = stringResource(Res.string.search)
                 )
             },
             textStyle = TextStyle(fontSize = 24.sp, fontFamily = fortniteFontFamily),
@@ -107,7 +110,7 @@ fun FindPlayerStatsScreen(
             )
         ) {
             Text(
-                stringResource(resources.strings.search),
+                stringResource(Res.string.search),
                 fontSize = MaterialTheme.typography.titleLarge.fontSize
             )
         }

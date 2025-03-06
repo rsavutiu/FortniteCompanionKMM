@@ -1,13 +1,41 @@
 package org.smartmuseum.fortnitecompanion.data.cosmetics
 
-import dev.icerock.moko.resources.ImageResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.aura_icon
+import fortnitecompanionapp.composeapp.generated.resources.back_blings_icon
+import fortnitecompanionapp.composeapp.generated.resources.banner_icon
+import fortnitecompanionapp.composeapp.generated.resources.bass_icon
+import fortnitecompanionapp.composeapp.generated.resources.boost_icon
+import fortnitecompanionapp.composeapp.generated.resources.builds_icon_lego
+import fortnitecompanionapp.composeapp.generated.resources.bundle_icon
+import fortnitecompanionapp.composeapp.generated.resources.car_body_icon
+import fortnitecompanionapp.composeapp.generated.resources.contrail_icon
+import fortnitecompanionapp.composeapp.generated.resources.decorations_icon_lego
+import fortnitecompanionapp.composeapp.generated.resources.drums_icon
+import fortnitecompanionapp.composeapp.generated.resources.emotes_icon
+import fortnitecompanionapp.composeapp.generated.resources.emoticons_icon
+import fortnitecompanionapp.composeapp.generated.resources.glider_icon
+import fortnitecompanionapp.composeapp.generated.resources.guitar_icon
+import fortnitecompanionapp.composeapp.generated.resources.keytar_icon
+import fortnitecompanionapp.composeapp.generated.resources.kicks_icon
+import fortnitecompanionapp.composeapp.generated.resources.loading_screens_icon
+import fortnitecompanionapp.composeapp.generated.resources.lobby_music_icon
+import fortnitecompanionapp.composeapp.generated.resources.microphone_icon
+import fortnitecompanionapp.composeapp.generated.resources.outfit_icon
+import fortnitecompanionapp.composeapp.generated.resources.pet_icon
+import fortnitecompanionapp.composeapp.generated.resources.pickaxe_icon
+import fortnitecompanionapp.composeapp.generated.resources.sprays_icon
+import fortnitecompanionapp.composeapp.generated.resources.toys_icon
+import fortnitecompanionapp.composeapp.generated.resources.trail_icon
+import fortnitecompanionapp.composeapp.generated.resources.wheel_icon
+import fortnitecompanionapp.composeapp.generated.resources.wraps_icon
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
+import org.jetbrains.compose.resources.DrawableResource
 import org.smartmuseum.fortnitecompanion.data.generic.CosmeticsSet
 import org.smartmuseum.fortnitecompanion.data.generic.Images
 import org.smartmuseum.fortnitecompanion.data.generic.Introduction
 import org.smartmuseum.fortnitecompanion.data.generic.Variant
-import org.smartmuseum.fortnitecompanion.resources
 
 @Serializable
 data class CosmeticsResponse(
@@ -128,37 +156,37 @@ data class CosmeticType(
     val displayValue: String,
     val backendValue: String
 ) {
-    fun getCosmeticTypeImage(): ImageResource? {
+    fun getCosmeticTypeImage(): DrawableResource? {
         when (value.lowercase()) {
-            "backpack" -> return resources.images.back_blings_icon
-            "emote", "built-in emote" -> return resources.images.emotes_icon
-            "emoticon", "emoji" -> return resources.images.emoticons_icon
-            "emotes" -> return resources.images.emotes_icon
-            "outfit", "skin" -> return resources.images.outfit_icon
-            "loadingscreen" -> return resources.images.loading_screens_icon
-            "spray" -> return resources.images.sprays_icon
-            "contrail" -> return resources.images.contrail_icon
-            "pickaxe" -> return resources.images.pickaxe_icon
-            "wrap", "wraps" -> return resources.images.wraps_icon
-            "glider" -> return resources.images.glider_icon
-            "lobbymusic", "music" -> return resources.images.lobby_music_icon
-            "banner" -> return resources.images.banner_icon
-            "trail", "turbo", "drifttrail", "drift" -> return resources.images.trail_icon
-            "wheel" -> return resources.images.wheel_icon
-            "aura" -> return resources.images.aura_icon
-            "toy" -> return resources.images.toys_icon
-            "shoe", "shoes", "kicks" -> return resources.images.kicks_icon
-            "petcarrier", "pet" -> return resources.images.pet_icon
-            "bundle" -> return resources.images.bundle_icon
-            "guitar" -> return resources.images.guitar_icon
-            "keytar", "keyboard" -> return resources.images.keytar_icon
-            "bass" -> return resources.images.bass_icon
-            "drum", "drums" -> return resources.images.drums_icon
-            "mic", "microphone" -> return resources.images.microphone_icon
-            "booster" -> return resources.images.boost_icon
-            "body" -> return resources.images.car_body_icon
-            "decor", "legoprop" -> return resources.images.decorations_icon_lego
-            "build", "legoset" -> return resources.images.builds_icon_lego
+            "backpack" -> return Res.drawable.back_blings_icon
+            "emote", "built-in emote" -> return Res.drawable.emotes_icon
+            "emoticon", "emoji" -> return Res.drawable.emoticons_icon
+            "emotes" -> return Res.drawable.emotes_icon
+            "outfit", "skin" -> return Res.drawable.outfit_icon
+            "loadingscreen" -> return Res.drawable.loading_screens_icon
+            "spray" -> return Res.drawable.sprays_icon
+            "contrail" -> return Res.drawable.contrail_icon
+            "pickaxe" -> return Res.drawable.pickaxe_icon
+            "wrap", "wraps" -> return Res.drawable.wraps_icon
+            "glider" -> return Res.drawable.glider_icon
+            "lobbymusic", "music" -> return Res.drawable.lobby_music_icon
+            "banner" -> return Res.drawable.banner_icon
+            "trail", "turbo", "drifttrail", "drift" -> return Res.drawable.trail_icon
+            "wheel" -> return Res.drawable.wheel_icon
+            "aura" -> return Res.drawable.aura_icon
+            "toy" -> return Res.drawable.toys_icon
+            "shoe", "shoes", "kicks" -> return Res.drawable.kicks_icon
+            "petcarrier", "pet" -> return Res.drawable.pet_icon
+            "bundle" -> return Res.drawable.bundle_icon
+            "guitar" -> return Res.drawable.guitar_icon
+            "keytar", "keyboard" -> return Res.drawable.keytar_icon
+            "bass" -> return Res.drawable.bass_icon
+            "drum", "drums" -> return Res.drawable.drums_icon
+            "mic", "microphone" -> return Res.drawable.microphone_icon
+            "booster" -> return Res.drawable.boost_icon
+            "body" -> return Res.drawable.car_body_icon
+            "decor", "legoprop" -> return Res.drawable.decorations_icon_lego
+            "build", "legoset" -> return Res.drawable.builds_icon_lego
         }
         return null
     }

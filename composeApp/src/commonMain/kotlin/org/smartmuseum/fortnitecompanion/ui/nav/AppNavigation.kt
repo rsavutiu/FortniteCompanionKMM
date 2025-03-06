@@ -14,11 +14,21 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination
 import androidx.navigation.compose.rememberNavController
-import dev.icerock.moko.resources.StringResource
+import com.diamondedge.logging.KmLog
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.account_found
+import fortnitecompanionapp.composeapp.generated.resources.account_not_found
+import fortnitecompanionapp.composeapp.generated.resources.account_private
+import fortnitecompanionapp.composeapp.generated.resources.app_name
+import fortnitecompanionapp.composeapp.generated.resources.details
+import fortnitecompanionapp.composeapp.generated.resources.loading
+import fortnitecompanionapp.composeapp.generated.resources.map
+import fortnitecompanionapp.composeapp.generated.resources.no_internet_connection
+import fortnitecompanionapp.composeapp.generated.resources.search
+import fortnitecompanionapp.composeapp.generated.resources.shop
+import org.jetbrains.compose.resources.StringResource
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
-import org.lighthousegames.logging.KmLog
-import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.storage.KMMSharedPrefs
 
 enum class Screen {
@@ -79,16 +89,16 @@ fun AppNavHost(
     val appBarTitle: State<StringResource> = derivedStateOf {
         log.i { "appBarTitle ${currentDestination.value.first}" }
         when (currentDestination.value.first) {
-            NavigationItem.FullCosmetic.route -> resources.strings.details
-            NavigationItem.FindPlayerStats.route -> resources.strings.search
-            NavigationItem.AccountFound.route -> resources.strings.account_found
-            NavigationItem.AccountNotFound.route -> resources.strings.account_not_found
-            NavigationItem.AccountPrivate.route -> resources.strings.account_private
-            NavigationItem.Loading.route -> resources.strings.loading
-            NavigationItem.Shop.route -> resources.strings.shop
-            NavigationItem.Map.route -> resources.strings.map
-            NavigationItem.NoInternetConnection.route -> resources.strings.no_internet_connection
-            else -> resources.strings.app_name
+            NavigationItem.FullCosmetic.route -> Res.string.details
+            NavigationItem.FindPlayerStats.route -> Res.string.search
+            NavigationItem.AccountFound.route -> Res.string.account_found
+            NavigationItem.AccountNotFound.route -> Res.string.account_not_found
+            NavigationItem.AccountPrivate.route -> Res.string.account_private
+            NavigationItem.Loading.route -> Res.string.loading
+            NavigationItem.Shop.route -> Res.string.shop
+            NavigationItem.Map.route -> Res.string.map
+            NavigationItem.NoInternetConnection.route -> Res.string.no_internet_connection
+            else -> Res.string.app_name
         }
 
     }

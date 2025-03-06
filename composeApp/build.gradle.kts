@@ -1,16 +1,14 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktorfit)
     alias(libs.plugins.kotlin.serialization)
-    id("dev.icerock.mobile.multiplatform-resources") // Plugins DSL way
 }
 
 //ktorfit {
@@ -19,18 +17,7 @@ plugins {
 //}
 
 kotlin {
-    tasks.matching { it.name == "syncComposeResourcesForIos" }
-        .configureEach { enabled = false }
-    targets.all {
-        compilations.all {
-            compilerOptions.configure {
-                freeCompilerArgs.add("-Xexpect-actual-classes")
-            }
-        }
-    }
-    iosX64()
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -45,21 +32,18 @@ kotlin {
         }
     }
     val includeIos = isIncludeIos(providers)
-
     if (includeIos) {
         println("Including iOS")
         listOf(
             iosX64(),
-            //        iosArm64(),
-            //        iosSimulatorArm64()
+            iosArm64(),
+            iosSimulatorArm64()
         ).forEach { iosTarget ->
             iosTarget.binaries.framework {
-                baseName = "composeApp"
-                isStatic = true
-                binaryOption("bundleId", "org.smartmuseum.fortnitecompanion.shared")
-                binaryOption("bundleVersion", "1")
-                export("dev.icerock.moko:resources:0.24.1")
-                export("dev.icerock.moko:graphics:0.9.0") // toUIColor here
+                baseName = "ComposeApp"
+                isStatic = false
+//                binaryOption("bundleId", "org.smartmuseum.fortnitecompanion.shared")
+//                binaryOption("bundleVersion", "1")
             }
         }
     } else {
@@ -124,10 +108,10 @@ kotlin {
             //logging
             api(libs.logging)
             //konnectivity
-            implementation(libs.konnectivity)
+//            implementation(libs.konnectivity)
             //Moko
-            api(libs.moko.resources)
-            api(libs.moko.resources.compose)
+//            api(libs.moko.resources)
+//            api(libs.moko.resources.compose)
             //Stately
             implementation(libs.stately.common)
             //Coil
@@ -137,11 +121,16 @@ kotlin {
             implementation(libs.alert.kmp)
         }
         commonTest.dependencies {
+            // Add the Kotlin test dependency
             implementation(libs.kotlin.test)
-            implementation(libs.jetbrains.kotlinx.coroutines.test)
         }
-        jvmTest.dependencies {
-            implementation(libs.mockk)
+    }
+
+    targets.configureEach {
+        compilations.configureEach {
+            compilerOptions.configure {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+            }
         }
     }
 }
@@ -149,13 +138,13 @@ kotlin {
 android {
     val sdkVersion = libs.versions.android.compileSdk.get().toInt()
     namespace = "org.smartmuseum.fortnitecompanion"
-    compileSdk = 35
+    compileSdk = sdkVersion
 
     defaultConfig {
         applicationId = "org.smartmuseum.fortnitecompanion"
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
-        targetSdk = 35
+
+        targetSdk = sdkVersion
         versionCode = 1
         versionName = "1.0"
     }
@@ -205,28 +194,3 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 }
 
-multiplatformResources {
-    resourcesPackage.set("org.smartmuseum.fortnitecompanion")// required
-    resourcesClassName = "resources" // optional, default MR
-//    resourcesVisibility = MRVisibility.Public // optional, default Public
-    iosBaseLocalizationRegion = "en" // optional, default "en"
-}
-
-val syncFramework = tasks.create("syncFramework", Sync::class) {
-    group = "build"
-    val framework =
-        kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>("iosX64").binaries.getFramework(
-            "debug"
-        )
-    val targetDir = File(buildDir, "xcode-frameworks")
-    val frameworkDir = File(targetDir, framework.name)
-
-    inputs.dir(framework.outputDirectory)
-    outputs.dir(targetDir)
-
-    from({ framework.outputDirectory })
-    into(frameworkDir)
-
-    dependsOn(framework.linkTaskProvider)
-//    dependsOn("copyFrameworkResourcesToApp")
-}

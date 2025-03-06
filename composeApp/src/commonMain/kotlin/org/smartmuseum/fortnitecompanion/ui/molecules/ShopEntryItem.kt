@@ -16,9 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.final_price
+import fortnitecompanionapp.composeapp.generated.resources.regular_price
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.data.shop.ShopEntry
-import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.components.ImageSlider
 import org.smartmuseum.fortnitecompanion.utils.formatDate
 
@@ -42,7 +44,7 @@ fun ShopEntryItem(entry: ShopEntry) {
             if (entry.regularPrice == entry.finalPrice) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = stringResource(resources.strings.regular_price, "${entry.finalPrice}"),
+                    text = stringResource(Res.string.regular_price, "${entry.finalPrice}"),
                     style = MaterialTheme.typography.bodyLarge
                 )
             } else {
@@ -52,13 +54,13 @@ fun ShopEntryItem(entry: ShopEntry) {
                 ) {
                     Text(
                         text = stringResource(
-                            resources.strings.regular_price,
+                            Res.string.regular_price,
                             "${entry.regularPrice}"
                         ),
                         style = MaterialTheme.typography.bodyLarge
                     )
                     Text(
-                        text = stringResource(resources.strings.final_price, "${entry.finalPrice}"),
+                        text = stringResource(Res.string.final_price, "${entry.finalPrice}"),
                         style = MaterialTheme.typography.bodyLarge
                     )
                 }

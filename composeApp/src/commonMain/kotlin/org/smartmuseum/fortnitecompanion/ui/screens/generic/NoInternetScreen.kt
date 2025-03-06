@@ -12,8 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import org.smartmuseum.fortnitecompanion.resources
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.no_internet_connection
+import fortnitecompanionapp.composeapp.generated.resources.retry
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun NoInternetScreen(onRetry: (() -> Unit)? = null) {
@@ -23,7 +25,7 @@ fun NoInternetScreen(onRetry: (() -> Unit)? = null) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(resources.strings.no_internet_connection),
+            text = stringResource(Res.string.no_internet_connection),
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(bottom = 16.dp)
@@ -31,7 +33,7 @@ fun NoInternetScreen(onRetry: (() -> Unit)? = null) {
 
         if (onRetry != null) {
             Button(onClick = { onRetry() }) {
-                Text(text = stringResource(resources.strings.retry))
+                Text(text = stringResource(Res.string.retry))
             }
         }
     }

@@ -1,5 +1,6 @@
-rootProject.name = "FortniteCompanionKMM"
+rootProject.name = "FortniteCompanionApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         google {

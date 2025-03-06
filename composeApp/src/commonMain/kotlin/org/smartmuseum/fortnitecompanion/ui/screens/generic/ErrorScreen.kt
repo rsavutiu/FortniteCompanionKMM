@@ -18,9 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
-import org.smartmuseum.fortnitecompanion.resources
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.loading_error
+import fortnitecompanionapp.composeapp.generated.resources.loading_failed
+import fortnitecompanionapp.composeapp.generated.resources.retry
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ErrorScreen(onRetry: () -> Unit) {
@@ -33,13 +36,13 @@ fun ErrorScreen(onRetry: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(resources.images.loading_error),
+            painter = painterResource(Res.drawable.loading_error),
             contentDescription = "Error Icon",
             modifier = Modifier.height(100.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = stringResource(resources.strings.loading_failed),
+            text = stringResource(Res.string.loading_failed),
             style = MaterialTheme.typography.headlineSmall,
             color = Color.White,
             textAlign = TextAlign.Center
@@ -49,7 +52,7 @@ fun ErrorScreen(onRetry: () -> Unit) {
             onClick = onRetry,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = stringResource(resources.strings.retry))
+            Text(text = stringResource(Res.string.retry))
         }
     }
 }

@@ -1,7 +1,8 @@
 package org.smartmuseum.fortnitecompanion.di
 
 import androidx.compose.ui.text.intl.Locale
-import com.plusmobileapps.konnectivity.Konnectivity
+import com.diamondedge.logging.KmLog
+import com.diamondedge.logging.logging
 import de.jensklingenberg.ktorfit.converter.CallConverterFactory
 import de.jensklingenberg.ktorfit.converter.FlowConverterFactory
 import de.jensklingenberg.ktorfit.ktorfit
@@ -16,10 +17,9 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.serialization.json.Json
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
-import org.lighthousegames.logging.KmLog
-import org.lighthousegames.logging.logging
 import org.smartmuseum.fortnitecompanion.Greeting
 import org.smartmuseum.fortnitecompanion.getPlatform
 import org.smartmuseum.fortnitecompanion.networking.BASE_URL
@@ -33,6 +33,10 @@ import org.smartmuseum.fortnitecompanion.usecases.GetMapUseCase
 import org.smartmuseum.fortnitecompanion.usecases.GetShopDataUseCase
 import org.smartmuseum.fortnitecompanion.utils.ExternalIntents
 import org.smartmuseum.fortnitecompanion.utils.TextUtils
+import org.smartmuseum.fortnitecompanion.viewmodel.CosmeticsViewModel
+import org.smartmuseum.fortnitecompanion.viewmodel.FindPlayerStatsViewModel
+import org.smartmuseum.fortnitecompanion.viewmodel.MapViewModel
+import org.smartmuseum.fortnitecompanion.viewmodel.ShopViewModel
 
 val commonModule = module {
     single { getPlatform() }
@@ -51,10 +55,6 @@ val commonModule = module {
         ExternalIntents(parameters[0])
     }
 
-    single<Konnectivity> {
-        Konnectivity()
-    }
-
     single<FortniteApiInterface> {
         val ktorfit = ktorfit {
             baseUrl(BASE_URL)
@@ -69,7 +69,11 @@ val commonModule = module {
                     sanitizeHeader { header -> header == HttpHeaders.Authorization }
                     logger = object : Logger {
                         override fun log(message: String) {
-                            log.info { message }
+                            try {
+                                log.info { message }
+                            } catch (e: Exception) {
+                                println("Error in logging: $e")
+                            }
                         }
 
                     }
@@ -121,4 +125,19 @@ val commonModule = module {
         ResponseConverter()
     }
 
+    viewModel {
+        CosmeticsViewModel()
+    }
+
+    viewModel {
+        ShopViewModel()
+    }
+
+    viewModel {
+        MapViewModel()
+    }
+
+    viewModel {
+        FindPlayerStatsViewModel()
+    }
 }

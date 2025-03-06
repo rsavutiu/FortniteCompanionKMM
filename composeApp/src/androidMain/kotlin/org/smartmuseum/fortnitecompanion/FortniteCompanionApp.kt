@@ -2,7 +2,6 @@ package org.smartmuseum.fortnitecompanion
 
 import android.app.Application
 import android.os.StrictMode
-import dev.icerock.moko.graphics.BuildConfig
 import org.smartmuseum.fortnitecompanion.di.KoinInitializer
 
 class FortniteCompanionApp: Application() {

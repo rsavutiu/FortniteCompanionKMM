@@ -21,11 +21,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.resources.compose.stringResource
-import fortnitecompanionkmm.composeapp.generated.resources.Res
-import fortnitecompanionkmm.composeapp.generated.resources.baseline_downloading_24
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.baseline_downloading_24
+import fortnitecompanionapp.composeapp.generated.resources.loading
+import fortnitecompanionapp.composeapp.generated.resources.loading1
+import fortnitecompanionapp.composeapp.generated.resources.loading2
+import fortnitecompanionapp.composeapp.generated.resources.loading3
+import fortnitecompanionapp.composeapp.generated.resources.loading4
 import org.jetbrains.compose.resources.painterResource
-import org.smartmuseum.fortnitecompanion.resources
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.ui.molecules.ImageCarousel
 
 @Composable
@@ -36,10 +40,10 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     ) {
         ImageCarousel(
             modifier = modifier, images = listOf(
-                resources.images.loading1,
-                resources.images.loading2,
-                resources.images.loading3,
-                resources.images.loading4
+                Res.drawable.loading1,
+                Res.drawable.loading2,
+                Res.drawable.loading3,
+                Res.drawable.loading4
             )
         )
 
@@ -55,7 +59,7 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
             )
         }
         Text(
-            text = stringResource(resources.strings.loading),
+            text = stringResource(Res.string.loading),
             color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.displayLarge,
             modifier = Modifier

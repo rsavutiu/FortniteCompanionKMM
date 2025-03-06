@@ -26,16 +26,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
+import fortnitecompanionapp.composeapp.generated.resources.Res
+import fortnitecompanionapp.composeapp.generated.resources.account_found
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 import org.smartmuseum.fortnitecompanion.data.stats.BattlePass
 import org.smartmuseum.fortnitecompanion.data.stats.PlayerAccount
 import org.smartmuseum.fortnitecompanion.data.stats.PlayerStatsData
 import org.smartmuseum.fortnitecompanion.data.stats.StatsCategory
 import org.smartmuseum.fortnitecompanion.data.stats.StatsMode
-import org.smartmuseum.fortnitecompanion.resources
 import org.smartmuseum.fortnitecompanion.ui.molecules.SimpleFloatGraph
 
 @Composable
@@ -58,7 +59,7 @@ fun PlayerStatsScreen(
                 onClick = { coroutineScope.launch { pagerState.animateScrollToPage(0) } },
                 text = {
                     Text(
-                        stringResource(resources.strings.account_found),
+                        stringResource(Res.string.account_found),
                         fontSize = MaterialTheme.typography.headlineSmall.fontSize
                     )
                 },
